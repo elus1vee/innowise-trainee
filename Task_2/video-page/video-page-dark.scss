@@ -5,6 +5,7 @@
 html {
   font-family: "Muli-Regular";
   font-size: 16px;
+  background: #17171e;
 }
 
 .wrapper {
@@ -33,15 +34,9 @@ html {
     position: absolute;
     right: 10px;
     margin-right: 10px;
-    background: url("../icons/search.svg");
+    background: url("../icons/search-white.svg");
     width: 19px;
     height: 19px;
-    // fill: white;
-    // img {
-    //   width: 19px;
-    //   height: 19px;
-    //   fill: white;
-    // }
   }
   &__column {
     display: flex;
@@ -51,15 +46,21 @@ html {
   }
   &__burger {
     margin-right: 28px;
-    background: url("../icons/header-burger.svg");
+    background: url("../icons/burger-white.svg");
     min-width: 20px;
     min-height: 17px;
+
     @media (max-width: 767px) {
       display: none;
     }
   }
   &__logo {
     margin-right: 60px;
+    svg {
+      path:last-child {
+        fill: white;
+      }
+    }
   }
   &__input {
     display: block;
@@ -93,6 +94,16 @@ html {
     @media (max-width: 767px) {
       &:not(:last-child) {
         display: none;
+      }
+    }
+
+    svg {
+      path {
+        stroke: none;
+      }
+      path:first-child {
+        fill: white;
+        opacity: 0.4;
       }
     }
   }
@@ -134,6 +145,7 @@ html {
     @media (max-width: 767px) {
       margin-top: 20px;
     }
+    max-width: 100%; //добавил
   }
 
   &__line {
@@ -168,7 +180,7 @@ html {
     h1 {
       font-size: 36px;
       line-height: 45px;
-      color: #192646;
+      color: white;
       font-weight: 800;
       @media (max-width: 767px) {
         font-size: 20px;
@@ -243,7 +255,7 @@ html {
   }
 
   &__item {
-    background: rgba($color: #ebebeb, $alpha: 0.3);
+    background: rgba($color: #ffffff, $alpha: 0.1);
     mix-blend-mode: normal;
     border-radius: 20px;
     display: flex;
@@ -251,11 +263,15 @@ html {
     align-items: center;
     height: 40px;
     width: 100px;
+    color: white;
     &:not(:last-child) {
       margin-right: 10px;
     }
     svg {
       margin-right: 8px;
+      path {
+        fill: white;
+      }
     }
   }
 
@@ -264,6 +280,11 @@ html {
     justify-content: center;
     align-items: center;
     margin-left: 40px;
+    svg {
+      path {
+        fill: white;
+      }
+    }
   }
 }
 .description {
@@ -288,14 +309,15 @@ html {
     font-size: 26px;
     line-height: 33px;
     font-weight: 800;
-    color: #19202c;
+    color: white;
     padding-bottom: 4px;
   }
 
   &__published {
     font-size: 13px;
     line-height: 16px;
-    color: #c2c2c2;
+    color: white;
+    opacity: 0.4;
     padding-bottom: 14px;
 
     @media (max-width: 767px) {
@@ -306,7 +328,7 @@ html {
   &__about {
     font-size: 16px;
     line-height: 22px;
-    color: #000000;
+    color: white;
     mix-blend-mode: normal;
     opacity: 0.6;
     padding-bottom: 15px;
@@ -344,8 +366,6 @@ html {
   }
 }
 .next {
-  max-width: 367px;
-
   @media (max-width: 767px) {
     align-self: center;
   }
@@ -355,7 +375,7 @@ html {
     line-height: 20px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: #19202c;
+    color: white;
     display: flex;
     align-items: center;
     font-weight: 800;
@@ -398,7 +418,7 @@ html {
     font-size: 36px;
     line-height: 45px;
     font-weight: 800;
-    color: #19202c;
+    color: white;
 
     @media (max-width: 1024px) {
       font-size: 20px;
@@ -450,7 +470,7 @@ html {
     font-size: 13px;
 
     h3 {
-      color: #19202c;
+      color: white;
       font-weight: 800;
       margin-bottom: 11px;
       font-size: 26px;
@@ -477,7 +497,7 @@ html {
     display: block;
   }
   &__container {
-    background: #ffffff;
+    background: #17171e;
     border-top: 1px solid #f1f1f1;
     padding: 11px 24px;
   }
@@ -498,6 +518,15 @@ html {
     cursor: pointer;
     &:first-child {
       color: #ff0000;
+    }
+    img {
+      margin-bottom: 4px;
+    }
+    svg {
+      margin-bottom: 4px;
+      path {
+        fill: #ffffff;
+      }
     }
     &_active {
     }

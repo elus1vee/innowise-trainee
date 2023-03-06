@@ -98,6 +98,7 @@ h6 {
 html {
   font-family: "Muli-Regular";
   font-size: 16px;
+  background: #17171e;
 }
 
 .wrapper {
@@ -139,7 +140,7 @@ html {
   position: absolute;
   right: 10px;
   margin-right: 10px;
-  background: url("../icons/search.svg");
+  background: url("../icons/search-white.svg");
   width: 19px;
   height: 19px;
 }
@@ -151,7 +152,7 @@ html {
 }
 .header__burger {
   margin-right: 28px;
-  background: url("../icons/header-burger.svg");
+  background: url("../icons/burger-white.svg");
   min-width: 20px;
   min-height: 17px;
 }
@@ -162,6 +163,9 @@ html {
 }
 .header__logo {
   margin-right: 60px;
+}
+.header__logo svg path:last-child {
+  fill: white;
 }
 .header__input {
   display: block;
@@ -197,6 +201,13 @@ html {
     display: none;
   }
 }
+.header__item svg path {
+  stroke: none;
+}
+.header__item svg path:first-child {
+  fill: white;
+  opacity: 0.4;
+}
 
 .main {
   max-width: 1920px;
@@ -229,6 +240,12 @@ html {
 .aside__list {
   margin-bottom: 60px;
 }
+.aside__list svg {
+  margin-right: 13px;
+}
+.aside__list svg path {
+  fill: white;
+}
 .aside__settings {
   color: #c2c2c2;
   display: flex;
@@ -237,6 +254,9 @@ html {
 }
 .aside__settings svg {
   margin-right: 12.3px;
+}
+.aside__settings svg path {
+  fill: #ffffff;
 }
 
 .list__item {
@@ -255,13 +275,16 @@ html {
   margin-right: 13px;
   width: 20px;
 }
+.list__item svg path {
+  fill: white;
+}
 .list__item_active {
   color: #ff0000;
 }
 
 .subs h3 {
   font-size: 18px;
-  color: #000000;
+  color: #ffffff;
   font-weight: bold;
   line-height: 23px;
   margin-bottom: 30px;
@@ -351,7 +374,7 @@ html {
 .profile__title h1 {
   font-size: 26px;
   line-height: 33px;
-  color: #19202c;
+  color: white;
   font-weight: 800;
   margin-bottom: 1px;
 }
@@ -453,8 +476,11 @@ html {
 .nav__list {
   font-size: 18px;
   line-height: 23px;
-  color: #000000;
+  color: white;
   display: flex;
+}
+.nav__item svg path {
+  fill: white;
 }
 .nav__item:not(:last-child) {
   margin-right: 69px;
@@ -486,7 +512,7 @@ html {
 .nav-small__list {
   font-size: 14px;
   line-height: 18px;
-  color: #000000;
+  color: white;
   display: flex;
 }
 .nav-small__item {
@@ -541,7 +567,7 @@ html {
 .video__title {
   font-size: 26px;
   line-height: 34px;
-  color: #19202c;
+  color: white;
   max-width: 431px;
   font-weight: 800;
   margin-bottom: 10px;
@@ -549,7 +575,7 @@ html {
 .video__description {
   font-size: 16px;
   line-height: 22px;
-  color: #000000;
+  color: white;
   mix-blend-mode: normal;
   opacity: 0.6;
   max-width: 555px;
@@ -558,7 +584,8 @@ html {
 .video__views {
   font-size: 16px;
   line-height: 22px;
-  color: #c2c2c2;
+  color: white;
+  opacity: 0.4;
 }
 
 .recommend__title {
@@ -581,7 +608,7 @@ html {
   font-size: 18px;
   line-height: 23px;
   font-weight: 800;
-  color: #19202c;
+  color: white;
 }
 
 .videos {
@@ -673,7 +700,7 @@ html {
   font-size: 13px;
 }
 .item__title h3 {
-  color: #19202c;
+  color: white;
   font-weight: 800;
   margin-bottom: 4px;
   font-size: 16px;
@@ -701,7 +728,7 @@ html {
   }
 }
 .footer__container {
-  background: #ffffff;
+  background: #17171e;
   border-top: 1px solid #f1f1f1;
   padding: 11px 24px;
 }
@@ -721,4 +748,13 @@ html {
 }
 .footer__item:first-child {
   color: #ff0000;
-}/*# sourceMappingURL=channel-page.css.map */
+}
+.footer__item img {
+  margin-bottom: 4px;
+}
+.footer__item svg {
+  margin-bottom: 4px;
+}
+.footer__item svg path {
+  fill: #ffffff;
+}/*# sourceMappingURL=channel-page-dark.css.map */

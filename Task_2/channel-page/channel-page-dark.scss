@@ -5,9 +5,11 @@
 html {
   font-family: "Muli-Regular";
   font-size: 16px;
+  background: #17171e;
 }
 
 .wrapper {
+  //ПЕРЕНЕСТИ
   min-height: 100%;
   overflow: hidden;
   display: flex;
@@ -42,15 +44,9 @@ html {
     position: absolute;
     right: 10px;
     margin-right: 10px;
-    background: url("../icons/search.svg");
+    background: url("../icons/search-white.svg");
     width: 19px;
     height: 19px;
-    // fill: white;
-    // img {
-    //   width: 19px;
-    //   height: 19px;
-    //   fill: white;
-    // }
   }
   &__column {
     display: flex;
@@ -60,15 +56,21 @@ html {
   }
   &__burger {
     margin-right: 28px;
-    background: url("../icons/header-burger.svg");
+    background: url("../icons/burger-white.svg");
     min-width: 20px;
     min-height: 17px;
+
     @media (max-width: 767px) {
       display: none;
     }
   }
   &__logo {
     margin-right: 60px;
+    svg {
+      path:last-child {
+        fill: white;
+      }
+    }
   }
   &__input {
     display: block;
@@ -104,6 +106,16 @@ html {
         display: none;
       }
     }
+
+    svg {
+      path {
+        stroke: none;
+      }
+      path:first-child {
+        fill: white;
+        opacity: 0.4;
+      }
+    }
   }
 }
 
@@ -133,6 +145,12 @@ html {
 
   &__list {
     margin-bottom: 60px;
+    svg {
+      path {
+        fill: white;
+      }
+      margin-right: 13px;
+    }
   }
 
   &__subs {
@@ -146,6 +164,9 @@ html {
 
     svg {
       margin-right: 12.3px;
+      path {
+        fill: #ffffff;
+      }
     }
   }
 }
@@ -165,6 +186,9 @@ html {
     svg {
       margin-right: 13px;
       width: 20px;
+      path {
+        fill: white;
+      }
     }
 
     &_active {
@@ -175,7 +199,8 @@ html {
 .subs {
   h3 {
     font-size: 18px;
-    color: #000000;
+    color: #ffffff;
+
     font-weight: bold;
     line-height: 23px;
     margin-bottom: 30px;
@@ -267,7 +292,7 @@ html {
     h1 {
       font-size: 26px;
       line-height: 33px;
-      color: #19202c;
+      color: white;
       font-weight: 800;
       margin-bottom: 1px;
 
@@ -363,11 +388,16 @@ html {
   &__list {
     font-size: 18px;
     line-height: 23px;
-    color: #000000;
+    color: white;
     display: flex;
   }
 
   &__item {
+    svg {
+      path {
+        fill: white;
+      }
+    }
     &:not(:last-child) {
       margin-right: 69px;
     }
@@ -399,7 +429,7 @@ html {
   &__list {
     font-size: 14px;
     line-height: 18px;
-    color: #000000;
+    color: white;
     display: flex;
   }
 
@@ -469,7 +499,7 @@ html {
   &__title {
     font-size: 26px;
     line-height: 34px;
-    color: #19202c;
+    color: white;
     max-width: 431px;
     font-weight: 800;
     margin-bottom: 10px;
@@ -478,7 +508,7 @@ html {
   &__description {
     font-size: 16px;
     line-height: 22px;
-    color: #000000;
+    color: white;
     mix-blend-mode: normal;
     opacity: 0.6;
     max-width: 555px;
@@ -488,7 +518,8 @@ html {
   &__views {
     font-size: 16px;
     line-height: 22px;
-    color: #c2c2c2;
+    color: white;
+    opacity: 0.4;
   }
 }
 .recommend {
@@ -518,7 +549,7 @@ html {
     font-size: 18px;
     line-height: 23px;
     font-weight: 800;
-    color: #19202c;
+    color: white;
   }
 }
 .videos {
@@ -623,7 +654,7 @@ html {
     font-size: 13px;
 
     h3 {
-      color: #19202c;
+      color: white;
       font-weight: 800;
       margin-bottom: 4px;
       font-size: 16px;
@@ -652,7 +683,7 @@ html {
     display: block;
   }
   &__container {
-    background: #ffffff;
+    background: #17171e;
     border-top: 1px solid #f1f1f1;
     padding: 11px 24px;
   }
@@ -673,6 +704,15 @@ html {
     cursor: pointer;
     &:first-child {
       color: #ff0000;
+    }
+    img {
+      margin-bottom: 4px;
+    }
+    svg {
+      margin-bottom: 4px;
+      path {
+        fill: #ffffff;
+      }
     }
     &_active {
     }

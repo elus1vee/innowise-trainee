@@ -65,6 +65,7 @@ html {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  background: #17171e;
 }
 ._container {
   max-width: 1920px;
@@ -96,15 +97,9 @@ html {
     position: absolute;
     right: 10px;
     margin-right: 10px;
-    background: url("../icons/search.svg");
+    background: url("../icons/search-white.svg");
     width: 19px;
     height: 19px;
-    // fill: white;
-    // img {
-    //   width: 19px;
-    //   height: 19px;
-    //   fill: white;
-    // }
   }
   &__column {
     display: flex;
@@ -114,15 +109,21 @@ html {
   }
   &__burger {
     margin-right: 28px;
-    background: url("../icons/header-burger.svg");
+    background: url("../icons/burger-white.svg");
     min-width: 20px;
     min-height: 17px;
+
     @media (max-width: 767px) {
       display: none;
     }
   }
   &__logo {
     margin-right: 60px;
+    svg {
+      path:last-child {
+        fill: white;
+      }
+    }
   }
   &__input {
     display: block;
@@ -158,6 +159,16 @@ html {
         display: none;
       }
     }
+
+    svg {
+      path {
+        stroke: none;
+      }
+      path:first-child {
+        fill: white;
+        opacity: 0.4;
+      }
+    }
   }
 }
 
@@ -186,6 +197,12 @@ html {
 
   &__list {
     margin-bottom: 60px;
+    svg {
+      path {
+        fill: white;
+      }
+      margin-right: 13px;
+    }
   }
 
   &__subs {
@@ -199,6 +216,9 @@ html {
 
     svg {
       margin-right: 12.3px;
+      path {
+        fill: #ffffff;
+      }
     }
   }
 }
@@ -218,6 +238,9 @@ html {
     svg {
       margin-right: 13px;
       width: 20px;
+      path {
+        fill: white;
+      }
     }
 
     &_active {
@@ -228,7 +251,8 @@ html {
 .subs {
   h3 {
     font-size: 18px;
-    color: #000000;
+    color: #ffffff;
+
     font-weight: bold;
     line-height: 23px;
     margin-bottom: 30px;
@@ -378,7 +402,7 @@ html {
     font-size: 13px;
 
     h3 {
-      color: #19202c;
+      color: #ffffff;
       font-weight: 800;
       margin-bottom: 4px;
       font-size: 16px;
@@ -396,7 +420,7 @@ html {
   }
 }
 h2 {
-  color: #19202c;
+  color: #ffffff;
   font-size: 26px;
   line-height: 33px;
   font-weight: 800;
@@ -448,7 +472,7 @@ h2 {
     display: block;
   }
   &__container {
-    background: #ffffff;
+    background: #17171e;
     border-top: 1px solid #f1f1f1;
     padding: 11px 24px;
   }
@@ -469,6 +493,15 @@ h2 {
     cursor: pointer;
     &:first-child {
       color: #ff0000;
+    }
+    img {
+      margin-bottom: 4px;
+    }
+    svg {
+      margin-bottom: 4px;
+      path {
+        fill: #ffffff;
+      }
     }
     &_active {
     }
