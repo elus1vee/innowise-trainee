@@ -1,7 +1,8 @@
 let link = document.getElementById("theme-link");
 let btn = document.getElementById("button-toggle");
 let fileName = location.pathname.match(/[^/]*$/)[0].split(".")[0];
-if (fileName == "index" || undefined || "") {
+console.log(fileName);
+if (fileName == "index" || fileName == undefined || fileName == "") {
   fileName = "home-page";
 }
 btn.addEventListener("click", () => {
