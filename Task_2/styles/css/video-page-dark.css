@@ -89,20 +89,22 @@ h6 {
 
 @font-face {
   font-family: "Muli-Regular";
-  src: url("../fonts/Muli-Regular.woff") format("woff");
+  src: url("../../fonts/Muli-Regular.woff") format("woff");
 }
 @font-face {
   font-family: "Muli-Italic";
-  src: url("../fonts/Muli-Italic.woff") format("woff");
+  src: url("../../fonts/Muli-Italic.woff") format("woff");
 }
 html {
   font-family: "Muli-Regular";
   font-size: 16px;
+  background: #17171e;
 }
 
-.wrapper {
+body {
   min-height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
 }
@@ -127,7 +129,7 @@ html {
   position: absolute;
   right: 10px;
   margin-right: 10px;
-  background: url("../icons/search.svg");
+  background: url("../../icons/search-white.svg");
   width: 19px;
   height: 19px;
 }
@@ -139,7 +141,7 @@ html {
 }
 .header__burger {
   margin-right: 28px;
-  background: url("../icons/header-burger.svg");
+  background: url("../../icons/burger-white.svg");
   min-width: 20px;
   min-height: 17px;
 }
@@ -150,6 +152,9 @@ html {
 }
 .header__logo {
   margin-right: 60px;
+}
+.header__logo svg path:last-child {
+  fill: white;
 }
 .header__input {
   display: block;
@@ -180,13 +185,26 @@ html {
 .header__item:not(:last-child) {
   margin-right: 50px;
 }
+.header__item button {
+  background: blue;
+  color: #ffffff;
+  padding: 3px 5px;
+  border-radius: 10px;
+}
 @media (max-width: 767px) {
   .header__item:not(:last-child) {
     display: none;
   }
 }
+.header__item svg path {
+  stroke: none;
+}
+.header__item svg path:first-child {
+  fill: white;
+  opacity: 0.4;
+}
 
-._container {
+.container {
   max-width: 1800px;
   margin: 0px auto;
   box-sizing: content-box;
@@ -220,6 +238,9 @@ html {
     padding-right: 0;
   }
 }
+.main__next {
+  max-width: 100%;
+}
 @media (max-width: 767px) {
   .main__next {
     margin-top: 20px;
@@ -251,12 +272,12 @@ html {
 .video__name h1 {
   font-size: 36px;
   line-height: 45px;
-  color: #192646;
+  color: #ffffff;
   font-weight: 800;
 }
 @media (max-width: 767px) {
   .video__name h1 {
-    font-size: 20px;
+    font-size: 1.25rem;
     line-height: 25px;
   }
 }
@@ -273,19 +294,18 @@ html {
   }
 }
 .video__views {
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 25px;
   color: #c2c2c2;
 }
 @media (max-width: 767px) {
   .video__views {
-    font-size: 12px;
+    font-size: 0.75rem;
     line-height: 15px;
     padding-bottom: 20px;
   }
 }
 .video__ratings {
-  font-size: 16px;
   line-height: 20px;
   color: #192646;
 }
@@ -326,7 +346,7 @@ html {
   display: flex;
 }
 .ratings__item {
-  background: rgba(235, 235, 235, 0.3);
+  background: rgba(255, 255, 255, 0.1);
   mix-blend-mode: normal;
   border-radius: 20px;
   display: flex;
@@ -334,6 +354,7 @@ html {
   align-items: center;
   height: 40px;
   width: 100px;
+  color: #ffffff;
 }
 .ratings__item:not(:last-child) {
   margin-right: 10px;
@@ -341,11 +362,17 @@ html {
 .ratings__item svg {
   margin-right: 8px;
 }
+.ratings__item svg path {
+  fill: white;
+}
 .ratings__settings {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-left: 40px;
+}
+.ratings__settings svg path {
+  fill: white;
 }
 
 .description__column {
@@ -356,21 +383,22 @@ html {
   margin-right: 12px;
 }
 @media (max-width: 767px) {
-  .description__image img {
+  .description__image a img {
     max-width: 50px;
   }
 }
 .description__title {
-  font-size: 26px;
+  font-size: 1.625rem;
   line-height: 33px;
   font-weight: 800;
-  color: #19202c;
+  color: #ffffff;
   padding-bottom: 4px;
 }
 .description__published {
-  font-size: 13px;
+  font-size: 0.8125rem;
   line-height: 16px;
-  color: #c2c2c2;
+  color: #ffffff;
+  opacity: 0.4;
   padding-bottom: 14px;
 }
 @media (max-width: 767px) {
@@ -379,9 +407,8 @@ html {
   }
 }
 .description__about {
-  font-size: 16px;
   line-height: 22px;
-  color: #000000;
+  color: #ffffff;
   mix-blend-mode: normal;
   opacity: 0.6;
   padding-bottom: 15px;
@@ -392,7 +419,7 @@ html {
   }
 }
 .description__show-more {
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 25px;
   color: #c2c2c2;
 }
@@ -404,15 +431,11 @@ html {
 .description__subscribe button {
   background: #ff0000;
   border-radius: 20px;
-  font-size: 16px;
   line-height: 20px;
   text-align: center;
   color: #ffffff;
   width: 154px;
   height: 40px;
-}
-.next {
-  max-width: 367px;
 }
 @media (max-width: 767px) {
   .next {
@@ -421,11 +444,10 @@ html {
 }
 .next_autoplay {
   flex: 0 1 146px;
-  font-size: 16px;
   line-height: 20px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: #19202c;
+  color: #ffffff;
   display: flex;
   align-items: center;
   font-weight: 800;
@@ -433,7 +455,7 @@ html {
 }
 @media (max-width: 1024px) {
   .next_autoplay {
-    font-size: 10px;
+    font-size: 0.625rem;
     line-height: 13px;
     letter-spacing: 0.625px;
   }
@@ -466,11 +488,11 @@ html {
   font-size: 36px;
   line-height: 45px;
   font-weight: 800;
-  color: #19202c;
+  color: #ffffff;
 }
 @media (max-width: 1024px) {
   .next__title {
-    font-size: 20px;
+    font-size: 1.25rem;
     line-height: 25px;
   }
 }
@@ -502,19 +524,19 @@ html {
 }
 .item__title {
   color: #c2c2c2;
-  font-size: 13px;
+  font-size: 0.8125rem;
 }
 .item__title h3 {
-  color: #19202c;
+  color: #ffffff;
   font-weight: 800;
   margin-bottom: 11px;
-  font-size: 26px;
+  font-size: 1.625rem;
   line-height: 33px;
 }
 .item__description {
   display: flex;
   justify-content: space-between;
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 23px;
 }
 
@@ -531,7 +553,7 @@ html {
   }
 }
 .footer__container {
-  background: #ffffff;
+  background: #17171e;
   border-top: 1px solid #f1f1f1;
   padding: 11px 24px;
 }
@@ -544,11 +566,20 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 10px;
+  font-size: 0.625rem;
   line-height: 13px;
   color: #898989;
   cursor: pointer;
 }
 .footer__item:first-child {
   color: #ff0000;
-}/*# sourceMappingURL=video-page.css.map */
+}
+.footer__item img {
+  margin-bottom: 4px;
+}
+.footer__item svg {
+  margin-bottom: 4px;
+}
+.footer__item svg path {
+  fill: #ffffff;
+}/*# sourceMappingURL=video-page-dark.css.map */

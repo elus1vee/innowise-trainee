@@ -1,19 +1,23 @@
-@import "../styles/nullstyles.scss";
-@import "../styles/variables.scss";
-@import "../styles/fonts.scss";
+@import "./nullstyles.scss";
+@import "./variables.scss";
+@import "./fonts.scss";
+@import "./mixins.scss";
 
 html {
   font-family: "Muli-Regular";
-  font-size: 16px;
+  font-size: $fs-base;
+  background: #17171e;
 }
 
-.wrapper {
+body {
   min-height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
 }
-._container {
+
+.container {
   max-width: 1920px;
   padding-left: 30px;
   margin: 0px auto;
@@ -27,14 +31,11 @@ html {
   width: 100%;
   margin-bottom: 2.605%;
   &__container {
-    display: flex;
     min-height: 64px;
-    align-items: center;
-    justify-content: space-between;
+    @include flex-block(space-between, center);
   }
   &__search {
-    display: flex;
-    align-items: center;
+    @include flex-block(flex-start, center);
     flex: 0 1 1053px;
     position: relative;
   }
@@ -42,15 +43,9 @@ html {
     position: absolute;
     right: 10px;
     margin-right: 10px;
-    background: url("../icons/search.svg");
+    background: url("../../icons/search-white.svg");
     width: 19px;
     height: 19px;
-    // fill: white;
-    // img {
-    //   width: 19px;
-    //   height: 19px;
-    //   fill: white;
-    // }
   }
   &__column {
     display: flex;
@@ -60,20 +55,26 @@ html {
   }
   &__burger {
     margin-right: 28px;
-    background: url("../icons/header-burger.svg");
+    background: url("../../icons/burger-white.svg");
     min-width: 20px;
     min-height: 17px;
+
     @media (max-width: 767px) {
       display: none;
     }
   }
   &__logo {
     margin-right: 60px;
+    svg {
+      path:last-child {
+        fill: white;
+      }
+    }
   }
   &__input {
     display: block;
     background: #ebebeb;
-    color: #30384c;
+    color: $c-blue-light;
     padding: 12px 2px 12px 23px;
     opacity: 0.3;
     border-radius: 22px;
@@ -99,9 +100,26 @@ html {
       margin-right: 50px;
     }
 
+    button {
+      background: blue;
+      color: $c-white;
+      padding: 3px 5px;
+      border-radius: 10px;
+    }
+
     @media (max-width: 767px) {
       &:not(:last-child) {
         display: none;
+      }
+    }
+
+    svg {
+      path {
+        stroke: none;
+      }
+      path:first-child {
+        fill: white;
+        opacity: 0.4;
       }
     }
   }
@@ -127,25 +145,34 @@ html {
     display: none;
   }
   &__lists {
-    color: #898989;
+    color: $c-grey-dark;
     margin-bottom: 105px;
   }
 
   &__list {
     margin-bottom: 60px;
+    svg {
+      path {
+        fill: white;
+      }
+      margin-right: 13px;
+    }
   }
 
   &__subs {
   }
 
   &__settings {
-    color: #c2c2c2;
+    color: $c-grey-light;
     display: flex;
     align-items: center;
     cursor: pointer;
 
     svg {
       margin-right: 12.3px;
+      path {
+        fill: $c-white;
+      }
     }
   }
 }
@@ -165,23 +192,27 @@ html {
     svg {
       margin-right: 13px;
       width: 20px;
+      path {
+        fill: white;
+      }
     }
 
     &_active {
-      color: #ff0000;
+      color: $c-red;
     }
   }
 }
 .subs {
   h3 {
-    font-size: 18px;
-    color: #000000;
-    font-weight: bold;
+    font-size: $fs-medium;
+    color: $c-white;
+
+    font-weight: $fw-bold;
     line-height: 23px;
     margin-bottom: 30px;
   }
   &__list {
-    color: #898989;
+    color: $c-grey-dark;
   }
 
   &__item {
@@ -265,25 +296,25 @@ html {
 
   &__title {
     h1 {
-      font-size: 26px;
+      font-size: $fs-large;
       line-height: 33px;
-      color: #19202c;
-      font-weight: 800;
+      color: $c-white;
+      font-weight: $fw-bold;
       margin-bottom: 1px;
 
       @media (max-width: 767px) {
-        font-size: 20px;
+        font-size: $fs-x-medium;
         line-height: 25px;
       }
     }
   }
 
   &__followers {
-    font-size: 13px;
+    font-size: $fs-x-small;
     line-height: 16px;
-    color: #c2c2c2;
+    color: $c-grey-light;
     @media (max-width: 767px) {
-      font-size: 12px;
+      font-size: $fs-small;
       line-height: 15px;
     }
   }
@@ -310,14 +341,14 @@ html {
     button {
       background: #ff0000;
       border-radius: 20px;
-      font-size: 16px;
+
       line-height: 20px;
       text-align: center;
-      color: #ffffff;
+      color: $c-white;
       width: 154px;
       height: 40px;
       @media (max-width: 767px) {
-        font-size: 12px;
+        font-size: $fs-small;
         line-height: 15px;
       }
     }
@@ -361,21 +392,26 @@ html {
     display: none;
   }
   &__list {
-    font-size: 18px;
+    font-size: $fs-medium;
     line-height: 23px;
-    color: #000000;
+    color: $c-white;
     display: flex;
   }
 
   &__item {
+    svg {
+      path {
+        fill: white;
+      }
+    }
     &:not(:last-child) {
       margin-right: 69px;
     }
 
     &_active {
-      color: #ff0000;
+      color: $c-red;
       position: relative;
-      font-weight: 800;
+      font-weight: $fw-bold;
     }
     &_active::after {
       content: "";
@@ -397,9 +433,9 @@ html {
     display: block;
   }
   &__list {
-    font-size: 14px;
+    font-size: $fs-xx-small;
     line-height: 18px;
-    color: #000000;
+    color: $c-white;
     display: flex;
   }
 
@@ -411,9 +447,9 @@ html {
     }
 
     &_active {
-      color: #ff0000;
+      color: $c-red;
       position: relative;
-      font-weight: 800;
+      font-weight: $fw-bold;
       display: flex;
       align-items: flex-end;
     }
@@ -446,7 +482,7 @@ html {
   &__time {
     background: rgba($color: #000000, $alpha: 0.3);
     border-radius: 12px;
-    color: #ffffff;
+    color: $c-white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -467,18 +503,17 @@ html {
   }
 
   &__title {
-    font-size: 26px;
+    font-size: $fs-large;
     line-height: 34px;
-    color: #19202c;
+    color: $c-white;
     max-width: 431px;
-    font-weight: 800;
+    font-weight: $fw-bold;
     margin-bottom: 10px;
   }
 
   &__description {
-    font-size: 16px;
     line-height: 22px;
-    color: #000000;
+    color: $c-white;
     mix-blend-mode: normal;
     opacity: 0.6;
     max-width: 555px;
@@ -486,16 +521,15 @@ html {
   }
 
   &__views {
-    font-size: 16px;
     line-height: 22px;
-    color: #c2c2c2;
+    color: $c-white;
+    opacity: 0.4;
   }
 }
 .recommend {
   &__title {
-    font-size: 16px;
     line-height: 20px;
-    color: #c2c2c2;
+    color: $c-grey-light;
     margin-bottom: 30px;
   }
 
@@ -515,10 +549,10 @@ html {
   }
 
   &__outhor {
-    font-size: 18px;
+    font-size: $fs-medium;
     line-height: 23px;
-    font-weight: 800;
-    color: #19202c;
+    font-weight: $fw-bold;
+    color: $c-white;
   }
 }
 .videos {
@@ -544,10 +578,10 @@ html {
     cursor: pointer;
 
     h2 {
-      color: #19202c;
-      font-size: 26px;
+      color: $c-blue-dark;
+      font-size: $fs-large;
       line-height: 33px;
-      font-weight: 800;
+      font-weight: $fw-bold;
     }
     @media (max-width: 767px) {
       h2 {
@@ -561,7 +595,7 @@ html {
 
     p {
       margin-left: 19px;
-      color: #c2c2c2;
+      color: $c-grey-light;
     }
   }
 
@@ -607,7 +641,7 @@ html {
   &__time {
     background: rgba($color: #000000, $alpha: 0.3);
     border-radius: 12px;
-    color: #ffffff;
+    color: $c-white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -619,14 +653,14 @@ html {
   }
 
   &__title {
-    color: #c2c2c2;
-    font-size: 13px;
+    color: $c-grey-light;
+    font-size: $fs-x-small;
 
     h3 {
-      color: #19202c;
-      font-weight: 800;
+      color: $c-white;
+      font-weight: $fw-bold;
       margin-bottom: 4px;
-      font-size: 16px;
+
       line-height: 20px;
     }
   }
@@ -634,7 +668,7 @@ html {
   &__description {
     display: flex;
     justify-content: space-between;
-    font-size: 13px;
+    font-size: $fs-x-small;
     line-height: 16px;
     max-height: 16px;
     white-space: nowrap;
@@ -652,7 +686,7 @@ html {
     display: block;
   }
   &__container {
-    background: #ffffff;
+    background: #17171e;
     border-top: 1px solid #f1f1f1;
     padding: 11px 24px;
   }
@@ -667,12 +701,21 @@ html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 10px;
+    font-size: $fs-tiny;
     line-height: 13px;
-    color: #898989;
+    color: $c-grey-dark;
     cursor: pointer;
     &:first-child {
-      color: #ff0000;
+      color: $c-red;
+    }
+    img {
+      margin-bottom: 4px;
+    }
+    svg {
+      margin-bottom: 4px;
+      path {
+        fill: $c-white;
+      }
     }
     &_active {
     }

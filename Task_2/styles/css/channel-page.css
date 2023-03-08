@@ -89,32 +89,33 @@ h6 {
 
 @font-face {
   font-family: "Muli-Regular";
-  src: url("../fonts/Muli-Regular.woff") format("woff");
+  src: url("../../fonts/Muli-Regular.woff") format("woff");
 }
 @font-face {
   font-family: "Muli-Italic";
-  src: url("../fonts/Muli-Italic.woff") format("woff");
+  src: url("../../fonts/Muli-Italic.woff") format("woff");
 }
 html {
   font-family: "Muli-Regular";
   font-size: 16px;
 }
 
-.wrapper {
+body {
   min-height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
 }
 
-._container {
+.container {
   max-width: 1920px;
   padding-left: 30px;
   margin: 0px auto;
   box-sizing: content-box;
 }
 @media (max-width: 767px) {
-  ._container {
+  .container {
     padding-left: 0px;
   }
 }
@@ -139,7 +140,7 @@ html {
   position: absolute;
   right: 10px;
   margin-right: 10px;
-  background: url("../icons/search.svg");
+  background: url("../../icons/search.svg");
   width: 19px;
   height: 19px;
 }
@@ -151,7 +152,7 @@ html {
 }
 .header__burger {
   margin-right: 28px;
-  background: url("../icons/header-burger.svg");
+  background: url("../../icons/header-burger.svg");
   min-width: 20px;
   min-height: 17px;
 }
@@ -191,6 +192,12 @@ html {
 }
 .header__item:not(:last-child) {
   margin-right: 50px;
+}
+.header__item button {
+  background: blue;
+  color: #ffffff;
+  padding: 3px 5px;
+  border-radius: 10px;
 }
 @media (max-width: 767px) {
   .header__item:not(:last-child) {
@@ -260,9 +267,9 @@ html {
 }
 
 .subs h3 {
-  font-size: 18px;
+  font-size: 1.125rem;
   color: #000000;
-  font-weight: bold;
+  font-weight: 800;
   line-height: 23px;
   margin-bottom: 30px;
 }
@@ -349,7 +356,7 @@ html {
   }
 }
 .profile__title h1 {
-  font-size: 26px;
+  font-size: 1.625rem;
   line-height: 33px;
   color: #19202c;
   font-weight: 800;
@@ -357,18 +364,18 @@ html {
 }
 @media (max-width: 767px) {
   .profile__title h1 {
-    font-size: 20px;
+    font-size: 1.25rem;
     line-height: 25px;
   }
 }
 .profile__followers {
-  font-size: 13px;
+  font-size: 0.8125rem;
   line-height: 16px;
   color: #c2c2c2;
 }
 @media (max-width: 767px) {
   .profile__followers {
-    font-size: 12px;
+    font-size: 0.75rem;
     line-height: 15px;
   }
 }
@@ -398,7 +405,6 @@ html {
 .profile__subscribe button {
   background: #ff0000;
   border-radius: 20px;
-  font-size: 16px;
   line-height: 20px;
   text-align: center;
   color: #ffffff;
@@ -407,7 +413,7 @@ html {
 }
 @media (max-width: 767px) {
   .profile__subscribe button {
-    font-size: 12px;
+    font-size: 0.75rem;
     line-height: 15px;
   }
 }
@@ -451,7 +457,7 @@ html {
   }
 }
 .nav__list {
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 23px;
   color: #000000;
   display: flex;
@@ -484,7 +490,7 @@ html {
   }
 }
 .nav-small__list {
-  font-size: 14px;
+  font-size: 0.875rem;
   line-height: 18px;
   color: #000000;
   display: flex;
@@ -519,7 +525,7 @@ html {
   display: flex;
   position: relative;
 }
-.video__img img {
+.video__img a img {
   max-width: 100%;
 }
 .video__time {
@@ -539,7 +545,7 @@ html {
   margin-top: 17px;
 }
 .video__title {
-  font-size: 26px;
+  font-size: 1.625rem;
   line-height: 34px;
   color: #19202c;
   max-width: 431px;
@@ -547,7 +553,6 @@ html {
   margin-bottom: 10px;
 }
 .video__description {
-  font-size: 16px;
   line-height: 22px;
   color: #000000;
   mix-blend-mode: normal;
@@ -556,13 +561,11 @@ html {
   margin-bottom: 30px;
 }
 .video__views {
-  font-size: 16px;
   line-height: 22px;
   color: #c2c2c2;
 }
 
 .recommend__title {
-  font-size: 16px;
   line-height: 20px;
   color: #c2c2c2;
   margin-bottom: 30px;
@@ -578,7 +581,7 @@ html {
   margin-right: 20px;
 }
 .recommend__outhor {
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 23px;
   font-weight: 800;
   color: #19202c;
@@ -609,7 +612,7 @@ html {
 }
 .videos__title h2 {
   color: #19202c;
-  font-size: 26px;
+  font-size: 1.625rem;
   line-height: 33px;
   font-weight: 800;
 }
@@ -670,22 +673,25 @@ html {
 }
 .item__title {
   color: #c2c2c2;
-  font-size: 13px;
+  font-size: 0.8125rem;
 }
 .item__title h3 {
   color: #19202c;
   font-weight: 800;
   margin-bottom: 4px;
-  font-size: 16px;
   line-height: 20px;
 }
 .item__description {
   display: flex;
   justify-content: space-between;
-  font-size: 13px;
+  font-size: 0.8125rem;
   line-height: 16px;
   max-height: 16px;
   white-space: nowrap;
+}
+
+h3 {
+  font-size: 16px;
 }
 
 .footer {
@@ -714,7 +720,7 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 10px;
+  font-size: 0.625rem;
   line-height: 13px;
   color: #898989;
   cursor: pointer;

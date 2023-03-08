@@ -1,72 +1,21 @@
-@import "../styles/nullstyles.scss";
-@import "../styles/variables.scss";
-@import "../styles/fonts.scss";
+@import "./nullstyles.scss";
+@import "./variables.scss";
+@import "./fonts.scss";
+@import "./mixins.scss";
 
 html {
   font-family: "Muli-Regular";
-  font-size: 16px;
+  font-size: $fs-base;
 }
-// .wrapper {
-//   display: flex;
-//   min-height: 100%;
-// }
-// .container {
-//   padding: 22px 70px 0 30px;
-// }
-// .header {
-//   width: 100%;
-//   max-height: 64px;
-//   &__column {
-//     display: flex;
-//   }
-//   &__content {
-//     display: flex;
-//     justify-content: space-between;
-//   }
-//   &__burger {
-//     padding: 12px 28px 0 0;
-//   }
-//   &__logo {
-//     padding: 8px 60px 0 0;
-//   }
-//   &_input {
-//     display: flex;
-//   }
-//   &__search {
-//     background: #ebebeb;
-//     color: #30384c;
-//     opacity: 0.4;
-//     border-radius: 22px;
-//     padding: 12px 23px;
-//     width: 830px;
-//   }
-//   &__menu {
-//     display: flex;
-//     flex: 1 1 auto;
-//     justify-content: flex-end;
-//     align-items: center;
-//   }
-//   .icon__camera {
-//     padding-right: 52.44px;
-//   }
-//   .icon__dots {
-//     padding-right: 52.44px;
-//   }
-//   .icon__bell {
-//     padding-right: 52.44px;
-//   }
-//   .icon__profile {
-//   }
-// }
-
-.wrapper {
-  //ПЕРЕНЕСТИ
+body {
   min-height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
 }
-._container {
+
+.container {
   max-width: 1920px;
   padding-left: 30px;
   margin: 0px auto;
@@ -96,15 +45,9 @@ html {
     position: absolute;
     right: 10px;
     margin-right: 10px;
-    background: url("../icons/search.svg");
+    background: url("../../icons/search.svg");
     width: 19px;
     height: 19px;
-    // fill: white;
-    // img {
-    //   width: 19px;
-    //   height: 19px;
-    //   fill: white;
-    // }
   }
   &__column {
     display: flex;
@@ -114,7 +57,7 @@ html {
   }
   &__burger {
     margin-right: 28px;
-    background: url("../icons/header-burger.svg");
+    background: url("../../icons/header-burger.svg");
     min-width: 20px;
     min-height: 17px;
     @media (max-width: 767px) {
@@ -127,7 +70,7 @@ html {
   &__input {
     display: block;
     background: #ebebeb;
-    color: #30384c;
+    color: $c-blue-light;
     padding: 12px 2px 12px 23px;
     opacity: 0.3;
     border-radius: 22px;
@@ -153,6 +96,13 @@ html {
       margin-right: 50px;
     }
 
+    button {
+      background: blue;
+      color: $c-white;
+      padding: 3px 5px;
+      border-radius: 10px;
+    }
+
     @media (max-width: 767px) {
       &:not(:last-child) {
         display: none;
@@ -173,14 +123,12 @@ html {
 
 .aside {
   flex: 0 0 225px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  @include flex-block(space-between, flex-start, column);
   @media (max-width: 767px) {
     display: none;
   }
   &__lists {
-    color: #898989;
+    color: $c-grey-dark;
     margin-bottom: 105px;
   }
 
@@ -192,7 +140,7 @@ html {
   }
 
   &__settings {
-    color: #c2c2c2;
+    color: $c-grey-light;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -221,20 +169,20 @@ html {
     }
 
     &_active {
-      color: #ff0000;
+      color: $c-red;
     }
   }
 }
 .subs {
   h3 {
-    font-size: 18px;
-    color: #000000;
-    font-weight: bold;
+    font-size: $fs-medium;
+    color: $c-black;
+    font-weight: $fw-bold;
     line-height: 23px;
     margin-bottom: 30px;
   }
   &__list {
-    color: #898989;
+    color: $c-grey-dark;
   }
 
   &__item {
@@ -281,7 +229,7 @@ html {
 
     p {
       margin-left: 19px;
-      color: #c2c2c2;
+      color: $c-grey-light;
       @media (max-width: 542px) {
         display: none;
       }
@@ -327,9 +275,9 @@ html {
     button {
       background: #ff0000;
       border-radius: 20px;
-      color: #ffffff;
+      color: $c-white;
       text-align: center;
-      font-size: 16px;
+
       line-height: 20px;
       height: 40px;
       width: 154px;
@@ -362,7 +310,7 @@ html {
   &__time {
     background: rgba($color: #000000, $alpha: 0.3);
     border-radius: 12px;
-    color: #ffffff;
+    color: $c-white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -374,14 +322,14 @@ html {
   }
 
   &__title {
-    color: #c2c2c2;
-    font-size: 13px;
+    color: $c-grey-light;
+    font-size: $fs-x-small;
 
     h3 {
-      color: #19202c;
-      font-weight: 800;
+      color: $c-blue-dark;
+      font-weight: $fw-bold;
       margin-bottom: 4px;
-      font-size: 16px;
+
       line-height: 20px;
     }
   }
@@ -389,17 +337,20 @@ html {
   &__description {
     display: flex;
     justify-content: space-between;
-    font-size: 13px;
+    font-size: $fs-x-small;
     line-height: 16px;
     max-height: 16px;
     white-space: nowrap;
   }
 }
 h2 {
-  color: #19202c;
-  font-size: 26px;
+  color: $c-blue-dark;
+  font-size: $fs-large;
   line-height: 33px;
-  font-weight: 800;
+  font-weight: $fw-bold;
+}
+h3 {
+  font-size: $fs-base;
 }
 .recommended {
   &__header {
@@ -448,7 +399,7 @@ h2 {
     display: block;
   }
   &__container {
-    background: #ffffff;
+    background: $c-white;
     border-top: 1px solid #f1f1f1;
     padding: 11px 24px;
   }
@@ -463,12 +414,12 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 10px;
+    font-size: $fs-tiny;
     line-height: 13px;
-    color: #898989;
+    color: $c-grey-dark;
     cursor: pointer;
     &:first-child {
-      color: #ff0000;
+      color: $c-red;
     }
     &_active {
     }
