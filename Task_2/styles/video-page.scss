@@ -105,6 +105,10 @@ body {
       &:not(:last-child) {
         display: none;
       }
+      img {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 }

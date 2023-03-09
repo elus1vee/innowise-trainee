@@ -20,6 +20,9 @@ body {
 .header {
   width: 100%;
   margin-bottom: 2.605%;
+  @media (max-width: 767px) {
+    margin-bottom: 23px;
+  }
   &__container {
     display: flex;
     min-height: 64px;
@@ -28,6 +31,9 @@ body {
     max-width: 1833px;
     margin-left: 22px;
     padding-right: 15px;
+    @media (max-width: 767px) {
+      min-height: 37px;
+    }
   }
   &__search {
     display: flex;
@@ -105,8 +111,11 @@ body {
       &:not(:last-child) {
         display: none;
       }
+      img {
+        width: 30px;
+        height: 30px;
+      }
     }
-
     svg {
       path {
         stroke: none;

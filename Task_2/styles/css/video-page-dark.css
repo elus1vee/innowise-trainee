@@ -113,6 +113,11 @@ body {
   width: 100%;
   margin-bottom: 2.605%;
 }
+@media (max-width: 767px) {
+  .header {
+    margin-bottom: 23px;
+  }
+}
 .header__container {
   display: flex;
   min-height: 64px;
@@ -121,6 +126,11 @@ body {
   max-width: 1833px;
   margin-left: 22px;
   padding-right: 15px;
+}
+@media (max-width: 767px) {
+  .header__container {
+    min-height: 37px;
+  }
 }
 .header__search {
   display: flex;
@@ -194,6 +204,10 @@ body {
 @media (max-width: 767px) {
   .header__item:not(:last-child) {
     display: none;
+  }
+  .header__item img {
+    width: 30px;
+    height: 30px;
   }
 }
 .header__item svg path {

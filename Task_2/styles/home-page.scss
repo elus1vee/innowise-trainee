@@ -29,11 +29,17 @@ body {
 .header {
   width: 100%;
   margin-bottom: 2.605%;
+  @media (max-width: 767px) {
+    margin-bottom: 20px;
+  }
   &__container {
     display: flex;
-    min-height: 64px;
+    height: 64px;
     align-items: flex-end;
     justify-content: space-between;
+    @media (max-width: 767px) {
+      height: 42px;
+    }
   }
   &__search {
     display: flex;
@@ -96,7 +102,6 @@ body {
     &:not(:last-child) {
       margin-right: 50px;
     }
-
     button {
       background: $c-red;
       color: $c-white;
@@ -107,6 +112,10 @@ body {
     @media (max-width: 767px) {
       &:not(:last-child) {
         display: none;
+      }
+      img {
+        width: 30px;
+        height: 30px;
       }
     }
   }
