@@ -32,7 +32,7 @@ body {
   &__container {
     display: flex;
     min-height: 64px;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
   }
   &__search {
@@ -54,6 +54,7 @@ body {
     align-items: center;
     flex: 1 1 835px;
     justify-content: flex-end;
+    margin-bottom: 2px;
   }
   &__burger {
     margin-right: 28px;
@@ -97,7 +98,7 @@ body {
     }
 
     button {
-      background: blue;
+      background: $c-red;
       color: $c-white;
       padding: 3px 5px;
       border-radius: 10px;
@@ -171,6 +172,9 @@ body {
     &_active {
       color: $c-red;
     }
+    p {
+      line-height: 20px;
+    }
   }
 }
 .subs {
@@ -193,6 +197,9 @@ body {
 
     img {
       margin-right: 10px;
+    }
+    p {
+      line-height: 20px;
     }
   }
 }
@@ -226,10 +233,15 @@ body {
     img {
       margin-right: 20px;
     }
+  }
+  &__name {
+    display: flex;
 
     p {
+      align-self: flex-end;
       margin-left: 19px;
       color: $c-grey-light;
+      line-height: 25px;
       @media (max-width: 542px) {
         display: none;
       }
@@ -313,7 +325,7 @@ body {
     cursor: pointer;
     height: 150px;
     width: 100%;
-    img {
+    video {
       height: 100%;
       width: 100%;
       object-fit: fill;
@@ -398,7 +410,6 @@ h3 {
 
   &__item {
     margin-bottom: 30px;
-    height: 230px;
     width: 100%;
     &:not(:last-child) {
       margin-right: 40px;
@@ -417,10 +428,13 @@ h3 {
     position: relative;
     margin-bottom: 10px;
     cursor: pointer;
-    height: 150px;
+    height: 13vw;
     width: 100%;
-    img {
-      // max-width: 100%;
+    @media (max-width: 1061px) {
+      height: 200px;
+      width: 100%;
+    }
+    video {
       height: 100%;
       width: 100%;
       object-fit: fill;

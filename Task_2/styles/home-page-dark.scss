@@ -34,7 +34,7 @@ body {
   &__container {
     display: flex;
     min-height: 64px;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
   }
   &__search {
@@ -47,7 +47,7 @@ body {
     position: absolute;
     right: 10px;
     margin-right: 10px;
-    background: url("../../icons/search.svg");
+    background: url("../../icons/search-white.svg");
     width: 19px;
     height: 19px;
   }
@@ -56,6 +56,7 @@ body {
     align-items: center;
     flex: 1 1 835px;
     justify-content: flex-end;
+    margin-bottom: 2px;
   }
   &__burger {
     margin-right: 28px;
@@ -77,10 +78,9 @@ body {
   }
   &__input {
     display: block;
-    background: #ebebeb;
-    color: $c-blue-light;
+    background: rgba($color: #ebebeb, $alpha: 0.1);
+    color: rgba($color: $c-white, $alpha: 0.4);
     padding: 12px 2px 12px 23px;
-    opacity: 0.3;
     border-radius: 22px;
     flex: 0 1 830px;
 
@@ -105,7 +105,7 @@ body {
     }
 
     button {
-      background: blue;
+      background: $c-red;
       color: $c-white;
       padding: 3px 5px;
       border-radius: 10px;
@@ -203,6 +203,9 @@ body {
     &_active {
       color: $c-red;
     }
+    p {
+      line-height: 20px;
+    }
   }
 }
 .subs {
@@ -226,6 +229,9 @@ body {
 
     img {
       margin-right: 10px;
+    }
+    p {
+      line-height: 20px;
     }
   }
 }
@@ -344,7 +350,7 @@ body {
     cursor: pointer;
     height: 150px;
     width: 100%;
-    img {
+    video {
       height: 100%;
       width: 100%;
       object-fit: fill;
@@ -429,7 +435,6 @@ h3 {
 
   &__item {
     margin-bottom: 30px;
-    height: 230px;
     width: 100%;
     &:not(:last-child) {
       margin-right: 40px;
@@ -448,9 +453,13 @@ h3 {
     position: relative;
     margin-bottom: 10px;
     cursor: pointer;
-    height: 150px;
+    height: 13vw;
     width: 100%;
-    img {
+    @media (max-width: 1061px) {
+      height: 200px;
+      width: 100%;
+    }
+    video {
       height: 100%;
       width: 100%;
       object-fit: fill;

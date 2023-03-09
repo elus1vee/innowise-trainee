@@ -19,11 +19,20 @@ body {
 .header {
   width: 100%;
   margin-bottom: 2.605%;
+  @media (max-width: 767px) {
+    margin-bottom: 23px;
+  }
   &__container {
     display: flex;
     min-height: 64px;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
+    max-width: 1833px;
+    margin-left: 22px;
+    padding-right: 15px;
+    @media (max-width: 767px) {
+      min-height: 37px;
+    }
   }
   &__search {
     display: flex;
@@ -38,18 +47,13 @@ body {
     background: url("../../icons/search.svg");
     width: 19px;
     height: 19px;
-    // fill: white;
-    // img {
-    //   width: 19px;
-    //   height: 19px;
-    //   fill: white;
-    // }
   }
   &__column {
     display: flex;
     align-items: center;
-    flex: 1 1 835px;
+    flex: 1 1 820px;
     justify-content: flex-end;
+    margin-bottom: 2px;
   }
   &__burger {
     margin-right: 28px;
@@ -77,8 +81,6 @@ body {
     }
   }
   &__menu {
-    margin-right: 70px;
-
     @media (max-width: 767px) {
       margin-right: 10px;
     }
@@ -93,7 +95,7 @@ body {
     }
 
     button {
-      background: blue;
+      background: $c-red;
       color: $c-white;
       padding: 3px 5px;
       border-radius: 10px;
@@ -108,7 +110,7 @@ body {
 }
 
 .container {
-  max-width: 1800px;
+  max-width: 1770px;
   margin: 0px auto;
   box-sizing: content-box;
   padding: 0 15px;
@@ -161,8 +163,7 @@ body {
 .video {
   &__player {
     margin-bottom: 20px;
-
-    img {
+    video {
       max-width: 100%;
     }
   }
@@ -446,8 +447,11 @@ body {
     margin-bottom: 10px;
     cursor: pointer;
     width: 100%;
-    height: 150px;
-    img {
+    height: 11vw;
+    @media (max-width: 767px) {
+      height: 46.875vw;
+    }
+    video {
       height: 100%;
       width: 100%;
       object-fit: fill;
@@ -478,6 +482,10 @@ body {
       margin-bottom: 11px;
       font-size: $fs-large;
       line-height: 33px;
+
+      @media (max-width: 767px) {
+        font-size: $fs-base;
+      }
     }
   }
 

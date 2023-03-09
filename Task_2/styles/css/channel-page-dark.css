@@ -126,16 +126,13 @@ body {
   margin-bottom: 2.605%;
 }
 .header__container {
-  min-height: 64px;
   display: flex;
-  flex-direction: row;
+  min-height: 64px;
+  align-items: flex-end;
   justify-content: space-between;
-  align-items: center;
 }
 .header__search {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
   align-items: center;
   flex: 0 1 1053px;
   position: relative;
@@ -153,6 +150,7 @@ body {
   align-items: center;
   flex: 1 1 835px;
   justify-content: flex-end;
+  margin-bottom: 2px;
 }
 .header__burger {
   margin-right: 28px;
@@ -173,10 +171,9 @@ body {
 }
 .header__input {
   display: block;
-  background: #ebebeb;
-  color: #30384c;
+  background: rgba(235, 235, 235, 0.1);
+  color: rgba(255, 255, 255, 0.4);
   padding: 12px 2px 12px 23px;
-  opacity: 0.3;
   border-radius: 22px;
   flex: 0 1 830px;
 }
@@ -201,7 +198,7 @@ body {
   margin-right: 50px;
 }
 .header__item button {
-  background: blue;
+  background: #ff0000;
   color: #ffffff;
   padding: 3px 5px;
   border-radius: 10px;
@@ -291,6 +288,9 @@ body {
 .list__item_active {
   color: #ff0000;
 }
+.list__item p {
+  line-height: 20px;
+}
 
 .subs h3 {
   font-size: 1.125rem;
@@ -310,6 +310,9 @@ body {
 }
 .subs__item img {
   margin-right: 10px;
+}
+.subs__item p {
+  line-height: 20px;
 }
 
 .content {
@@ -549,12 +552,17 @@ body {
   z-index: 100;
 }
 
+.video a {
+  display: flex;
+  align-items: flex-start;
+}
 .video__img {
   margin-right: 32px;
   display: flex;
+  align-items: flex-start;
   position: relative;
 }
-.video__img img {
+.video__img video {
   max-width: 100%;
 }
 .video__time {
@@ -641,7 +649,7 @@ body {
   cursor: pointer;
 }
 .videos__title h2 {
-  color: #19202c;
+  color: #ffffff;
   font-size: 1.625rem;
   line-height: 33px;
   font-weight: 800;
@@ -694,7 +702,15 @@ body {
 .item:not(:last-child) {
   margin-right: 40px;
 }
-@media (max-width: 1142px) {
+@media (max-width: 576px) {
+  .item {
+    padding-right: 0px;
+  }
+  .item:not(:last-child) {
+    margin-right: 0px;
+  }
+}
+@media (min-width: 577px) and (max-width: 1142px) {
   .item {
     padding-right: 10px;
   }
@@ -711,7 +727,7 @@ body {
   height: 150px;
   width: 100%;
 }
-.item__img img {
+.item__img video {
   height: 100%;
   width: 100%;
   -o-object-fit: fill;
