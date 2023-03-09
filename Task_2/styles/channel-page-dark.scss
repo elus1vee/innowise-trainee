@@ -624,8 +624,22 @@ body {
 }
 
 .item {
+  height: 230px;
+
+  @media (max-width: 576px) {
+    width: 100%;
+  }
+  @media (min-width: 577px) and (max-width: 1142px) {
+    width: 50%;
+  }
   &:not(:last-child) {
     margin-right: 40px;
+  }
+  @media (max-width: 1142px) {
+    &:not(:last-child) {
+      margin-right: 0px;
+    }
+    padding-right: 10px;
   }
   &__img {
     display: flex;
@@ -633,8 +647,12 @@ body {
     position: relative;
     margin-bottom: 10px;
     cursor: pointer;
-
+    height: 150px;
+    width: 100%;
     img {
+      height: 100%;
+      width: 100%;
+      object-fit: fill;
     }
   }
 

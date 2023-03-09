@@ -648,8 +648,29 @@ body {
   padding-bottom: 30px;
 }
 
+.item {
+  height: 230px;
+}
+@media (max-width: 576px) {
+  .item {
+    width: 100%;
+  }
+}
+@media (min-width: 577px) and (max-width: 1142px) {
+  .item {
+    width: 50%;
+  }
+}
 .item:not(:last-child) {
   margin-right: 40px;
+}
+@media (max-width: 1142px) {
+  .item {
+    padding-right: 10px;
+  }
+  .item:not(:last-child) {
+    margin-right: 0px;
+  }
 }
 .item__img {
   display: flex;
@@ -657,6 +678,14 @@ body {
   position: relative;
   margin-bottom: 10px;
   cursor: pointer;
+  height: 150px;
+  width: 100%;
+}
+.item__img img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: fill;
+     object-fit: fill;
 }
 .item__time {
   background: rgba(0, 0, 0, 0.3);

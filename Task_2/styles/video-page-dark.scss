@@ -281,6 +281,11 @@ body {
         fill: white;
       }
     }
+    @media (max-width: 767px) {
+      &:last-child {
+        display: none;
+      }
+    }
   }
 
   &__settings {
@@ -375,8 +380,11 @@ body {
   }
 }
 .next {
+  width: 367px;
   @media (max-width: 767px) {
     align-self: center;
+    width: 100%;
+    margin-bottom: 61px;
   }
   &_autoplay {
     flex: 0 1 146px;
@@ -445,6 +453,9 @@ body {
   }
 }
 .item {
+  @media (max-width: 767px) {
+    width: 100%;
+  }
   &:not(:last-child) {
     margin-bottom: 23px;
   }
@@ -454,9 +465,12 @@ body {
     position: relative;
     margin-bottom: 10px;
     cursor: pointer;
-
+    width: 100%;
+    height: 150px;
     img {
-      max-width: 100%;
+      height: 100%;
+      width: 100%;
+      object-fit: fill;
     }
   }
 
