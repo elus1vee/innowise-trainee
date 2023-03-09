@@ -5,7 +5,9 @@ let fileName = location.pathname.match(/[^/]*$/)[0].split(".")[0];
 if (fileName == "index" || fileName == undefined || fileName == "") {
   fileName = "home-page";
 }
-
+if (!currentTheme) {
+  currentTheme = ".css";
+}
 link.href = `.${
   fileName == "home-page" ? "" : "."
 }/styles/css/${fileName}${currentTheme} `;
