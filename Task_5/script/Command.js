@@ -2,17 +2,24 @@ export class Command {
   constructor() {
     this.execute = function () {};
     this.unexecute = function () {};
+    this.setParams = function () {};
   }
 }
 
 export class AddCommand extends Command {
   constructor(calculator, operand) {
     super();
+    this.calculator = calculator;
+    this.operand = operand;
+    this.setParams = function (calc, opa) {
+      this.calculator = calc;
+      this.operand = opa;
+    };
     this.execute = function () {
-      calculator.add(operand);
+      this.calculator.add(this.operand);
     };
     this.unexecute = function () {
-      calculator.substract(operand);
+      this.calculator.substract(this.operand);
     };
   }
 }
@@ -20,11 +27,17 @@ export class AddCommand extends Command {
 export class SubtractCommand extends Command {
   constructor(calculator, operand) {
     super();
+    this.calculator = calculator;
+    this.operand = operand;
+    this.setParams = function (calc, opa) {
+      this.calculator = calc;
+      this.operand = opa;
+    };
     this.execute = function () {
-      calculator.subtract(operand);
+      this.calculator.subtract(this.operand);
     };
     this.unexecute = function () {
-      calculator.add(operand);
+      this.calculator.add(this.operand);
     };
   }
 }
@@ -32,11 +45,17 @@ export class SubtractCommand extends Command {
 export class MultiplyCommand extends Command {
   constructor(calculator, operand) {
     super();
+    this.calculator = calculator;
+    this.operand = operand;
+    this.setParams = function (calc, opa) {
+      this.calculator = calc;
+      this.operand = opa;
+    };
     this.execute = function () {
-      calculator.multiply(operand);
+      this.calculator.multiply(this.operand);
     };
     this.unexecute = function () {
-      calculator.divide(operand);
+      this.calculator.divide(this.operand);
     };
   }
 }
@@ -44,11 +63,17 @@ export class MultiplyCommand extends Command {
 export class DivideCommand extends Command {
   constructor(calculator, operand) {
     super();
+    this.calculator = calculator;
+    this.operand = operand;
+    this.setParams = function (calc, opa) {
+      this.calculator = calc;
+      this.operand = opa;
+    };
     this.execute = function () {
-      calculator.divide(operand);
+      this.calculator.divide(this.operand);
     };
     this.unexecute = function () {
-      calculator.multiply(operand);
+      this.calculator.multiply(this.operand);
     };
   }
 }
@@ -56,11 +81,17 @@ export class DivideCommand extends Command {
 export class ExpCommand extends Command {
   constructor(calculator, operand) {
     super();
+    this.calculator = calculator;
+    this.operand = operand;
+    this.setParams = function (calc, opa) {
+      this.calculator = calc;
+      this.operand = opa;
+    };
     this.execute = function () {
-      calculator.exp(operand);
+      this.calculator.exp(this.operand);
     };
     this.unexecute = function () {
-      calculator.cbrt(operand);
+      this.calculator.cbrt(this.operand);
     };
   }
 }
@@ -68,11 +99,17 @@ export class ExpCommand extends Command {
 export class CbrtCommand extends Command {
   constructor(calculator, operand) {
     super();
+    this.calculator = calculator;
+    this.operand = operand;
+    this.setParams = function (calc, opa) {
+      this.calculator = calc;
+      this.operand = opa;
+    };
     this.execute = function () {
-      calculator.cbrt(operand);
+      this.calculator.cbrt(this.operand);
     };
     this.unexecute = function () {
-      calculator.exp(operand);
+      this.calculator.exp(this.operand);
     };
   }
 }
@@ -85,6 +122,48 @@ export class InvCommand extends Command {
     };
     this.unexecute = function () {
       calculator.inv();
+    };
+  }
+}
+
+export class PercentCommand extends Command {
+  constructor(calculator, operand) {
+    super();
+    this.execute = function () {
+      return calculator.percent(operand);
+    };
+    this.unexecute = function () {
+      calculator.unpercent(operand);
+    };
+  }
+}
+
+export class SignChangeCommand extends Command {
+  constructor(calculator) {
+    super();
+    this.execute = function () {
+      calculator.signChange();
+    };
+    this.unexecute = function () {
+      calculator.signChange();
+    };
+  }
+}
+
+export class ClearCommand extends Command {
+  constructor(calculator) {
+    super();
+    this.execute = function () {
+      calculator.clear();
+    };
+  }
+}
+
+export class FactorialCommand extends Command {
+  constructor(calculator, operand) {
+    super();
+    this.execute = function () {
+      calculator.factorial(operand);
     };
   }
 }
