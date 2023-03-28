@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 export class Command {
   constructor() {
     this.execute = function () {};
@@ -129,11 +130,17 @@ export class InvCommand extends Command {
 export class PercentCommand extends Command {
   constructor(calculator, operand) {
     super();
+    this.calculator = calculator;
+    this.operand = operand;
+    this.setParams = function (calc, opa) {
+      this.calculator = calc;
+      this.operand = opa;
+    };
     this.execute = function () {
-      return calculator.percent(operand);
+      return this.calculator.percent(this.operand);
     };
     this.unexecute = function () {
-      calculator.unpercent(operand);
+      this.calculator.unpercent(this.operand);
     };
   }
 }
@@ -160,10 +167,10 @@ export class ClearCommand extends Command {
 }
 
 export class FactorialCommand extends Command {
-  constructor(calculator, operand) {
+  constructor(calculator) {
     super();
     this.execute = function () {
-      calculator.factorial(operand);
+      calculator.factorial();
     };
   }
 }
@@ -187,6 +194,32 @@ export class MemorySaveCommand extends Command {
     };
     this.unexecute = function () {
       calculator.memoryClear();
+    };
+  }
+}
+
+export class MemoryPlusCommand extends Command {
+  constructor(calculator, value) {
+    super();
+    this.calculator = calculator;
+    this.execute = function () {
+      calculator.memoryPlus(value);
+    };
+    this.unexecute = function () {
+      calculator.memoryMinus(value);
+    };
+  }
+}
+
+export class MemoryMinusCommand extends Command {
+  constructor(calculator, value) {
+    super();
+    this.calculator = calculator;
+    this.execute = function () {
+      calculator.memoryMinus(value);
+    };
+    this.unexecute = function () {
+      calculator.memoryPlus(value);
     };
   }
 }

@@ -1,8 +1,3 @@
-import {
-  AddCommand, CbrtCommand, ClearCommand, DivideCommand, ExpCommand, FactorialCommand,
-  InvCommand, MultiplyCommand, PercentCommand, SignChangeCommand, SubtractCommand,
-} from './Command.js';
-
 // eslint-disable-next-line import/prefer-default-export
 export class Calculator {
   constructor() {
@@ -14,20 +9,14 @@ export class Calculator {
   }
 
   add(operand) {
-    this.commands.push(AddCommand);
-    this.command = new AddCommand();
     this.currentValue += operand;
   }
 
   subtract(operand) {
-    this.commands.push(SubtractCommand);
-    this.command = new SubtractCommand();
     this.currentValue -= operand;
   }
 
   multiply(operand) {
-    this.commands.push(MultiplyCommand);
-    this.command = new MultiplyCommand();
     this.currentValue *= operand;
   }
 
@@ -35,38 +24,31 @@ export class Calculator {
     if (operand === 0) {
       throw Error('division by zero');
     }
-    this.commands.push(DivideCommand);
-    this.command = new DivideCommand();
     this.currentValue /= operand;
   }
 
   exp(operand) {
-    this.commands.push(ExpCommand);
-    this.command = new ExpCommand();
     this.currentValue **= operand;
   }
 
-  cbrt() { // have to fix
+  cbrt(value) {
     if (this.currentValue < 0) {
       throw Error('square root of negative number');
     }
-    this.commands.push(CbrtCommand);
-    this.command = new CbrtCommand();
-    this.currentValue = Math.sqrt(this.currentValue);
+    this.currentValue **= 1 / value;
   }
 
   inv() {
     if (this.currentValue === 0) {
       throw Error('division by zero');
     }
-    this.commands.push(InvCommand);
-    this.command = new InvCommand();
     this.currentValue = 1 / this.currentValue;
   }
 
   percent(operand) {
-    // this.commands.push(PercentCommand);
-    // this.command = PercentCommand();
+    if (this.currentValue === 0) {
+      this.currentValue = 1 * (operand / 100);
+    }
     return this.currentValue * (operand / 100);
   }
 
@@ -75,14 +57,10 @@ export class Calculator {
   }
 
   signChange() {
-    this.commands.push(SignChangeCommand);
-    this.command = new SignChangeCommand();
     this.currentValue = -this.currentValue;
   }
 
   clear() {
-    this.commands.push(ClearCommand);
-    this.command = new ClearCommand();
     this.currentValue = 0;
   }
 
@@ -90,25 +68,20 @@ export class Calculator {
     if (!Number.isInteger(this.currentValue)) {
       throw Error('factorial is available only for integers');
     }
-
-    this.commands.push(FactorialCommand);
-    this.command = new FactorialCommand();
-    // eslint-disable-next-line no-plusplus
     const flag = this.currentValue;
     let result = 1;
     for (let i = 1; i <= flag; i += 1) {
       result *= i;
     }
     this.currentValue = result;
-    console.log(`Получили: ${this.currentValue}`);
   }
 
   memoryClear() {
-    this.memory = null;
+    this.memory = 0;
   }
 
   memoryRead() {
-    if (this.memory !== null) {
+    if (this.memory !== 0) {
       this.currentValue = this.memory;
     } else {
       console.warn('Memory is empty');
@@ -117,6 +90,14 @@ export class Calculator {
 
   memorySave(number) {
     this.memory = number;
+  }
+
+  memoryPlus(number) {
+    this.memory += number;
+  }
+
+  memoryMinus(number) {
+    this.memory -= number;
   }
 
   getResult() {
@@ -129,5 +110,10 @@ export class Calculator {
 
   changeFlag(value) {
     this.flag = value;
+  }
+
+  pushCommand(command) {
+    this.commands.push(command);
+    this.command = command;
   }
 }
