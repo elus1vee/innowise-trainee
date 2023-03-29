@@ -12,6 +12,34 @@ import './styles.css';
 const calculator = new Calculator();
 const input = document.getElementsByClassName('calculator__input')[0];
 const calc = document.getElementsByClassName('calculator__body')[0];
+let themeFlag = 'black';
+
+function themeChange(flag) {
+  if (flag === 'black') {
+    document.querySelectorAll('.item').forEach((element) => {
+      element.classList.add('item-white');
+    });
+    document.getElementsByClassName('calculator__body')[0].classList.add('calculator__body-white');
+    document.getElementsByClassName('calculator')[0].classList.add('calculator-white');
+    document.getElementsByClassName('calculator__header')[0].classList.add('calculator__header-white');
+    document.querySelectorAll('.item-number').forEach((element) => {
+      element.classList.add('item-number-white');
+    });
+    themeFlag = 'white';
+  } else {
+    document.querySelectorAll('.item').forEach((element) => {
+      element.classList.remove('item-white');
+    });
+    document.getElementsByClassName('item')[0].classList.add('item-white');
+    document.getElementsByClassName('calculator__body')[0].classList.remove('calculator__body-white');
+    document.getElementsByClassName('calculator')[0].classList.remove('calculator-white');
+    document.getElementsByClassName('calculator__header')[0].classList.remove('calculator__header-white');
+    document.querySelectorAll('.item-number').forEach((element) => {
+      element.classList.remove('item-number-white');
+    });
+    themeFlag = 'black';
+  }
+}
 
 calc.addEventListener('click', (event) => {
   const button = event.target;
@@ -188,6 +216,7 @@ calc.addEventListener('click', (event) => {
       input.value = '0';
       break;
     case 'item29':
+      themeChange(themeFlag);
       break;
     case 'item30':
       if (input.value !== '0') { input.value += '0'; }
