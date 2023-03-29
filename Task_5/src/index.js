@@ -7,6 +7,7 @@ import {
   SignChangeCommand, SubtractCommand,
 } from './Command.js';
 import { Calculator } from './Calculator.js';
+import './styles.css';
 
 const calculator = new Calculator();
 const input = document.getElementsByClassName('calculator__input')[0];
@@ -15,9 +16,6 @@ const calc = document.getElementsByClassName('calculator__body')[0];
 calc.addEventListener('click', (event) => {
   const button = event.target;
   const buttonClass = button.className.split(' ')[1];
-  console.log(calculator.flag);
-  console.log(calculator.command);
-  console.log(calculator.currentValue);
   switch (buttonClass) {
     case 'item1':
       calculator.setValue(Number(input.value));
@@ -33,8 +31,7 @@ calc.addEventListener('click', (event) => {
       break;
     case 'item3':
       calculator.pushCommand(new MemoryReadCommand(calculator));
-      calculator.command.execute();
-      input.value = calculator.getResult();
+      input.value = calculator.command.execute();
       break;
     case 'item4':
       calculator.pushCommand(new ClearCommand(calculator));

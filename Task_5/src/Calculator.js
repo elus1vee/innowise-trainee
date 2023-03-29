@@ -80,12 +80,12 @@ export class Calculator {
     this.memory = 0;
   }
 
+  // eslint-disable-next-line consistent-return
   memoryRead() {
     if (this.memory !== 0) {
-      this.currentValue = this.memory;
-    } else {
-      console.warn('Memory is empty');
+      return this.memory;
     }
+    console.warn('Memory is empty');
   }
 
   memorySave(number) {

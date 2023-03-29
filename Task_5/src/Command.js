@@ -229,7 +229,7 @@ export class MemoryReadCommand extends Command {
     super();
     this.calculator = calculator;
     this.execute = function () {
-      calculator.memoryRead();
+      return this.calculator.memoryRead();
     };
   }
 }
