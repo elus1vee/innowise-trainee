@@ -8,7 +8,7 @@
 <h2>Project structure</h2>
 <p>
     ├──./dist/<br/>│   ├──index.[contenthash].js<br/>│   ├──index.html<br/>│   └──main.[contenthash].css<br/>
-    ├──./src/<br/>│   ├──/css/<br/>│   │   ├──reset-style.css<br/>│   │   ├──styles.css<br/>│   ├──/js/<br/>│   │   ├──/calculator/<br/>│   │   │   ├──Command.js<br/>│   │   │   ├──Calculator.js<br/>│   │   ├──index.js<br/>│   └──index.html<br/>
-    <br/>├──.babelrc<br/>├──.eslitrc.json<br/>├──calulator.test.js<br/>├──package-lock.json<br/>├──package.json<br/>├──postcss.config.js<br/>├──README.md<br/>├──webpack.config.js<br/>├──.gitignore
+    ├──./src/<br/>│   ├──/css/<br/>│   │   ├──reset-style.css<br/>│   │   ├──styles.css<br/>│   ├──/js/<br/>│   │   ├──/calculator/<br/>│   │   │   ├──Command.js<br/>│   │   │   ├──Calculator.js<br/>│   │   ├──index.js<br/>│   └──index.html
+    <br/>├──.babelrc<br/>├──.eslitrc.json<br/>├──calulator.test.js<br/>├──package-lock.json<br/>├──package.json<br/>├──postcss.config.js<br/>├──README.md<br/>├──webpack.config.js<br/>└──.gitignore
 </p>
 <hr/>
