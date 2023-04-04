@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'template.html'),
+      template: path.join(__dirname, 'src', 'index.html'),
       filename: 'index.html',
     }),
     new FileManagerPlugin({
@@ -25,7 +25,7 @@ module.exports = {
     watchFiles: path.join(__dirname, 'src'),
     port: 9000,
   },
-  entry: path.join(__dirname, 'src', 'index.js'),
+  entry: path.join(__dirname, 'src', 'js', 'index.js'),
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'index.[contenthash].js',

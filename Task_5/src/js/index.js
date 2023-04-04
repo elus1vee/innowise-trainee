@@ -5,9 +5,9 @@ import {
   InvCommand, MemoryClearCommand,
   MemoryMinusCommand, MemoryPlusCommand, MemoryReadCommand, MultiplyCommand,
   SignChangeCommand, SubtractCommand,
-} from './Command.js';
-import { Calculator } from './Calculator.js';
-import './styles.css';
+} from './calculator/Command.js';
+import { Calculator } from './calculator/Calculator.js';
+import '../css/styles.css';
 
 const calculator = new Calculator();
 const input = document.getElementsByClassName('calculator__input')[0];
@@ -17,25 +17,25 @@ let themeFlag = 'black';
 function themeChange(flag) {
   if (flag === 'black') {
     document.querySelectorAll('.item').forEach((element) => {
-      element.classList.add('item-white');
+      element.classList.add('item_white');
     });
-    document.getElementsByClassName('calculator__body')[0].classList.add('calculator__body-white');
-    document.getElementsByClassName('calculator')[0].classList.add('calculator-white');
-    document.getElementsByClassName('calculator__header')[0].classList.add('calculator__header-white');
-    document.querySelectorAll('.item-number').forEach((element) => {
-      element.classList.add('item-number-white');
+    document.getElementsByClassName('calculator__body')[0].classList.add('calculator__body_white');
+    document.getElementsByClassName('calculator')[0].classList.add('calculator_white');
+    document.getElementsByClassName('calculator__header')[0].classList.add('calculator__header_white');
+    document.querySelectorAll('.item__number').forEach((element) => {
+      element.classList.add('item__number_white');
     });
     themeFlag = 'white';
   } else {
     document.querySelectorAll('.item').forEach((element) => {
-      element.classList.remove('item-white');
+      element.classList.remove('item_white');
     });
-    document.getElementsByClassName('item')[0].classList.add('item-white');
-    document.getElementsByClassName('calculator__body')[0].classList.remove('calculator__body-white');
-    document.getElementsByClassName('calculator')[0].classList.remove('calculator-white');
-    document.getElementsByClassName('calculator__header')[0].classList.remove('calculator__header-white');
-    document.querySelectorAll('.item-number').forEach((element) => {
-      element.classList.remove('item-number-white');
+    document.getElementsByClassName('item')[0].classList.add('item_white');
+    document.getElementsByClassName('calculator__body')[0].classList.remove('calculator__body_white');
+    document.getElementsByClassName('calculator')[0].classList.remove('calculator_white');
+    document.getElementsByClassName('calculator__header')[0].classList.remove('calculator__header_white');
+    document.querySelectorAll('.item__number').forEach((element) => {
+      element.classList.remove('item__number_white');
     });
     themeFlag = 'black';
   }
@@ -45,35 +45,35 @@ calc.addEventListener('click', (event) => {
   const button = event.target;
   const buttonClass = button.className.split(' ')[1];
   switch (buttonClass) {
-    case 'item1':
+    case 'item_1':
       calculator.setValue(Number(input.value));
       calculator.pushCommand(new ExpCommand(calculator, 2));
       calculator.command.execute();
       input.value = calculator.getResult();
       break;
-    case 'item2':
+    case 'item_2':
       calculator.setValue(Number(input.value));
       calculator.pushCommand(new InvCommand(calculator));
       calculator.command.execute();
       input.value = calculator.getResult();
       break;
-    case 'item3':
+    case 'item_3':
       calculator.pushCommand(new MemoryReadCommand(calculator));
       input.value = calculator.command.execute();
       break;
-    case 'item4':
+    case 'item_4':
       calculator.pushCommand(new ClearCommand(calculator));
       calculator.command.execute();
       input.value = '0';
       calculator.changeFlag(false);
       break;
-    case 'item5':
+    case 'item_5':
       calculator.setValue(Number(input.value));
       calculator.pushCommand(new SignChangeCommand(calculator));
       calculator.command.execute();
       input.value = calculator.getResult();
       break;
-    case 'item6':
+    case 'item_6':
       if (calculator.getResult() === 0) {
         calculator.percent(Number(input.value));
         input.value = calculator.getResult();
@@ -81,7 +81,7 @@ calc.addEventListener('click', (event) => {
         input.value = calculator.percent(Number(input.value));
       }
       break;
-    case 'item7':
+    case 'item_7':
       if (calculator.flag) {
         calculator.command.setParams(calculator, Number(input.value));
         calculator.command.execute();
@@ -92,33 +92,33 @@ calc.addEventListener('click', (event) => {
       calculator.pushCommand(new DivideCommand());
       input.value = '0';
       break;
-    case 'item8':
+    case 'item_8':
       calculator.setValue(Number(input.value));
       calculator.pushCommand(new ExpCommand(calculator, 3));
       calculator.command.execute();
       input.value = calculator.getResult();
       break;
-    case 'item9':
+    case 'item_9':
       calculator.setValue(Number(input.value));
       calculator.pushCommand(new CbrtCommand(calculator, 2));
       calculator.command.execute();
       input.value = calculator.getResult();
       break;
-    case 'item10':
+    case 'item_10':
       calculator.pushCommand(new MemoryPlusCommand(calculator, Number(input.value)));
       calculator.command.execute();
       input.value = '0';
       break;
-    case 'item11':
+    case 'item_11':
       if (input.value === '0') { input.value = '7'; } else { input.value += '7'; }
       break;
-    case 'item12':
+    case 'item_12':
       if (input.value === '0') { input.value = '8'; } else { input.value += '8'; }
       break;
-    case 'item13':
+    case 'item_13':
       if (input.value === '0') { input.value = '9'; } else { input.value += '9'; }
       break;
-    case 'item14':
+    case 'item_14':
       if (calculator.flag) {
         calculator.command.setParams(calculator, Number(input.value));
         calculator.command.execute();
@@ -129,7 +129,7 @@ calc.addEventListener('click', (event) => {
       calculator.pushCommand(new MultiplyCommand());
       input.value = '0';
       break;
-    case 'item15':
+    case 'item_15':
       if (calculator.flag) {
         calculator.command.setParams(calculator, Number(input.value));
         calculator.command.execute();
@@ -140,27 +140,27 @@ calc.addEventListener('click', (event) => {
       calculator.pushCommand(new ExpCommand());
       input.value = '0';
       break;
-    case 'item16':
+    case 'item_16':
       calculator.setValue(Number(input.value));
       calculator.pushCommand(new CbrtCommand(calculator, 3));
       calculator.command.execute();
       input.value = calculator.getResult();
       break;
-    case 'item17':
+    case 'item_17':
       calculator.pushCommand(new MemoryMinusCommand(calculator, Number(input.value)));
       calculator.command.execute();
       input.value = '0';
       break;
-    case 'item18':
+    case 'item_18':
       if (input.value === '0') { input.value = '4'; } else { input.value += '4'; }
       break;
-    case 'item19':
+    case 'item_19':
       if (input.value === '0') { input.value = '5'; } else { input.value += '5'; }
       break;
-    case 'item20':
+    case 'item_20':
       if (input.value === '0') { input.value = '6'; } else { input.value += '6'; }
       break;
-    case 'item21':
+    case 'item_21':
       if (calculator.flag) {
         calculator.command.setParams(calculator, Number(input.value));
         calculator.command.execute();
@@ -174,13 +174,13 @@ calc.addEventListener('click', (event) => {
       }
       calculator.pushCommand(new SubtractCommand());
       break;
-    case 'item22':
+    case 'item_22':
       calculator.setValue(Number(input.value));
       calculator.pushCommand(new FactorialCommand(calculator));
       calculator.command.execute();
       input.value = calculator.getResult();
       break;
-    case 'item23':
+    case 'item_23':
       if (calculator.flag) {
         calculator.command.setParams(calculator, Number(input.value));
         calculator.command.execute();
@@ -191,20 +191,20 @@ calc.addEventListener('click', (event) => {
       calculator.pushCommand(new CbrtCommand());
       input.value = '0';
       break;
-    case 'item24':
+    case 'item_24':
       calculator.pushCommand(new MemoryClearCommand(calculator));
       calculator.command.execute();
       break;
-    case 'item25':
+    case 'item_25':
       if (input.value === '0') { input.value = '1'; } else { input.value += '1'; }
       break;
-    case 'item26':
+    case 'item_26':
       if (input.value === '0') { input.value = '2'; } else { input.value += '2'; }
       break;
-    case 'item27':
+    case 'item_27':
       if (input.value === '0') { input.value = '3'; } else { input.value += '3'; }
       break;
-    case 'item28':
+    case 'item_28':
       if (calculator.flag) {
         calculator.command.setParams(calculator, Number(input.value));
         calculator.command.execute();
@@ -215,16 +215,16 @@ calc.addEventListener('click', (event) => {
       calculator.pushCommand(new AddCommand());
       input.value = '0';
       break;
-    case 'item29':
+    case 'item_29':
       themeChange(themeFlag);
       break;
-    case 'item30':
+    case 'item_30':
       if (input.value !== '0') { input.value += '0'; }
       break;
-    case 'item31':
+    case 'item_31':
       input.value += '.';
       break;
-    case 'item32':
+    case 'item_32':
       if (calculator.flag) {
         calculator.command.setParams(calculator, Number(input.value));
         calculator.command.execute();
