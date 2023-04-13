@@ -1,13 +1,13 @@
 import { createRouter, createWebHistory } from "vue-router";
-import LogInPage from "@/pages/LogInPage";
+import SignUpPage from "@/pages/SignUpPage";
 import SignInPage from "@/pages/SignInPage";
 import ToDoPage from "@/pages/ToDoPage";
 import ToDoUpdatePage from "@/pages/ToDoUpdatePage";
 
 const routes = [
   {
-    path: "/login",
-    component: LogInPage,
+    path: "/signup",
+    component: SignUpPage,
   },
   {
     path: "/signin",

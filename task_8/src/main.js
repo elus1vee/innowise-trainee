@@ -5,7 +5,7 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 import router from "./router/router";
-
+import "@/assets/css/reset-style.css";
 async function getUsers(db) {
   let arr = [];
   const response = db.collection("users");
@@ -22,5 +22,4 @@ async function getUsers(db) {
 getUsers(db);
 
 const app = createApp(App);
-
 app.use(router).mount("#app");
