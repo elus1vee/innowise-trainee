@@ -1,24 +1,22 @@
 <template>
-  <div>
-    <calendarList/>
+  <div class="content">
+    <router-view></router-view>
   </div>
 </template>
 <script>
-import calendarList from './components/calendarList.vue';
 export default {
-  components:{
-     calendarList
-  },
   data(){
     return{
-      date:{
-        title: "Wed",
-        number: "10",
-      }
     }
   }
 }
 </script>
 <style>
-  
+  .content{
+    display: flex;
+    justify-content: center;
+    height: 80vh;
+    margin: 30px 20px;
+     
+  }
 </style>

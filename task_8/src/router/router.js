@@ -6,6 +6,10 @@ import ToDoUpdatePage from "@/pages/ToDoUpdatePage";
 
 const routes = [
   {
+    path: "/",
+    redirect: "/signin",
+  },
+  {
     path: "/signup",
     component: SignUpPage,
   },
