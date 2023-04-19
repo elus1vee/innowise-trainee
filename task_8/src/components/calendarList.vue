@@ -1,6 +1,12 @@
 <template>
-    <div style="display: flex;">
-        <calendar-day v-for="day in calendarList" :date="day" :unfulfilled="true" :active="false" :completed="true" :key="day.number"/>
+    <div class="wrapper">
+        <div class="calendar-list" :style="{'margin-left':'-'+ currentIndex + 'px'}">
+            <calendar-day v-for="day in calendarData" :date="day" :active="selectedDay(day.fullDate)" :key="day.fullDate"  @active="activeDay"/>
+        </div>
+        <div class="arrows">
+            <button class="arrows__button left" @click="leftSlide"></button>
+            <button class="arrows__button right" @click="rightSlide"></button>
+        </div>
     </div>
 </template>
 <script>
@@ -12,43 +18,95 @@ export default {
     name: "calendar-list",
     data(){
         return{
-            calendarList: [],
+            currentIndex: 0,
+        }
+    },
+    props:{
+        calendarData:{
+            require: true,
+        },
+        active:{
+            type: String,
         }
     },
     methods:{
-        createCalendar(){
-            console.log("hello");
-            let list = [];
-            const weekDays={
-                1: "Mon",
-                2: "Tue",
-                3: "Wed",
-                4: "Thu",
-                5: "Fri",
-                6: "Sat",
-                0: "Sun",
+        activeDay(date){
+            this.$emit('active',date);
+        },
+        selectedDay(date){
+            if(date === this.active){
+                return true
+            }else{
+                return false
             }
-            const today = new Date();
-            let date = today;
-            do {
-                let name = "";
-                Object.entries(weekDays).forEach(el=>{
-                    if(el[0] === `${date.getDay()}`) name = el[1]
-                })
-                list.push({title: name,number: date.getUTCDate()})
-
-
-                date = new Date(date.getTime() + (24 * 60 * 60 * 1000));
-            } while (date.getDate() !== 1);
-            this.calendarList = list;
-        }
+        },
+        leftSlide(){
+            if(this.currentIndex > 0){
+                if(this.currentIndex < 75){
+                    this.currentIndex=0;
+                }else{
+                    this.currentIndex-= this.scrollLength;
+                }
+            }
+        },
+        rightSlide(){
+            if(this.leftWidth !== 0){
+                this.currentIndex+= this.scrollLength;
+            }
+        },
+        updateWidth() {
+            this.width = window.innerWidth;
+        },
     },
     mounted(){
-        this.createCalendar();
-    }
+    },
+    computed:{
+        fullCalendarWidth(){
+            return 75* this.calendarData.length;
+        },
+        contentWidth(){
+            let width = 722;
+            if(!(window.innerWidth > 722)){
+                width = window.innerWidth - 40;
+            }
+            return width;
+        },
+        leftWidth(){
+            return this.fullCalendarWidth - this.contentWidth - this.currentIndex;
+        },
+        scrollLength(){
+            let scrollLength = 75;
+            if(this.leftWidth % 75 > 0){
+                scrollLength = this.leftWidth % 75;
+            }
+            return scrollLength;
+        },
+        startLeftWidth(){
+            return  75* this.calendarData.length - this.contentWidth;
+        }
+    },
 
 }
 </script>
-<style scoped>
+<style scoped lang="scss">
+.calendar-list{
+    display: flex;
+}
+.arrows{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    &__button{
+        width: 25px;
+        height: 25px;
+    }
+}
+.left{
+    background: url("@/assets/img/left.png") 0 0 no-repeat;
+}
+.right{
+    background: url("@/assets/img/right.png") 0 0 no-repeat;
     
+}
 </style>

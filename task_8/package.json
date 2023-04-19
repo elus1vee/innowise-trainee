@@ -10,8 +10,12 @@
     "core-js": "^3.8.3",
     "firebase": "^9.19.1",
     "pinia": "^2.0.34",
+    "swiper": "^8.4.7",
     "vue": "^3.2.13",
+    "vue-awesome-swiper": "^5.0.1",
     "vue-router": "^4.0.3",
+    "vue-slick-carousel": "^1.0.6",
+    "vue3-slick-carousel": "^1.0.6",
     "vue3-toastify": "^0.1.6",
     "vuex": "^4.0.0"
   },

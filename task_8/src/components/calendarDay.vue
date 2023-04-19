@@ -1,46 +1,44 @@
 <template>
-    <div :class="[active ? 'day_active' : '', 'day']">
-        <div class="day__body">
-            <p class="day__name">{{ date.title }}</p>
-            <p class="day__number">{{ date.number }}</p>
+        <div :class="[active ? 'day_active' : '', 'day']" @click="activeDay(date.fullDate)">
+            <div class="day__body">
+                <p class="day__name">{{ date.title }}</p>
+                <p class="day__number">{{ date.numberDate }}</p>
+            </div>
+            <div class="day__info">
+                <div class="day__completed" v-if="date.completed"></div>
+                <div class="day__unfulfilled" v-if="date.unfulfilled"></div>
+            </div>
         </div>
-        <div class="day__info">
-            <div class="day__completed" v-if="completed"></div>
-            <div class="day__unfulfilled" v-if="unfulfilled"></div>
-        </div>
-    </div>
 </template>
 <script>
 export default {
     name: "calendar-day",
+    components:{
+    },
     data(){
         return{
         }
     },
     props:{
         date:{
-            type: Object,
             required: true,
         },
         active:{
             type: Boolean,
             required: true,
-        },
-        unfulfilled:{
-            type: Boolean,
-            required: true,
-        },
-        completed:{
-            type: Boolean,
-            required: true,
-        } 
+        }, 
+    },
+    methods:{
+        activeDay(date){
+            this.$emit('active',date);
+        }
     }
 }
 </script>
-<style scoped>
+<style scoped lang="scss">
     .day{
         margin: 10px;
-        width: 55px;
+        min-width: 55px;
         font-size: 16px;
         cursor: pointer;
     }
