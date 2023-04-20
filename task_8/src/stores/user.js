@@ -77,11 +77,26 @@ export const useAuthUser = defineStore("authUser", {
         if (el.fullDate === this.selectedDay) {
           el.todolist = el.todolist.map((todo) => {
             if (todo === this.selectedTodo) {
-              console.log("AFAFAAPAPFP");
               return editedTodo;
             } else {
               return todo;
             }
+          });
+        }
+        return el;
+      });
+      this.calendarData = newCalendarData;
+      const uid = this.getUserId();
+      await firebase
+        .database()
+        .ref(`/users/${uid}/todo`)
+        .set(this.calendarData);
+    },
+    async deleteTodo() {
+      const newCalendarData = this.calendarData.map((el) => {
+        if (el.fullDate === this.selectedDay) {
+          el.todolist = el.todolist.filter((todo) => {
+            if (todo !== this.selectedTodo) return todo;
           });
         }
         return el;

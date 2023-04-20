@@ -59,6 +59,12 @@ export default {
                 this.description = this.authUser.selectedTodo.description;
                 this.selected = this.authUser.selectedTodo.completed;
             }
+        },
+        async deleteTodo(){
+            if(this.authUser.selectedTodo.title !== undefined){
+                await this.authUser.deleteTodo();
+            }
+            this.$router.push('todo')
         }
     },
     computed:{
