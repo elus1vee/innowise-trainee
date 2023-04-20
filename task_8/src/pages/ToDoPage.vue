@@ -1,10 +1,12 @@
 <template>
     <div class="todo-page">
-        <h1 class="todo-page__title">Tassker</h1>
-        <calendarList :calendar-data="calendarData" class="todo-page__list" @active="activeDay" :active="active"/>
-        <my-button :onclick="authUser.logout">Logout</my-button>
+        <div class="todo-page__header">
+            <h1 class="todo-page__title">Tassker</h1>
+            <my-button :onclick="authUser.logout">Logout</my-button>     
+        </div>
+        <calendarList :calendar-data="calendarData" class="todo-page__list" @active="activeDay" :active="active" @edit="editTodo"/>
         <todoList :todo-data="todoActiveDayData" @update="updateTodoList"/>
-        <button class="todo-page__button">Add a new task</button>
+        <button class="todo-page__button" @click="addNewTodo">Add a new task</button>
     </div>
 </template>
 <script>
@@ -82,10 +84,10 @@ export default {
             } while (date.getDate() !== 1);
             this.authUser.calendarData = list;
             this.calendarData = list;
-            console.log(this.calendarData);
         },
         activeDay(date){
             this.active = date;
+            this.authUser.selectedDay = this.active;
             this.todoActiveDay();
         },
         todoActiveDay(){
@@ -118,7 +120,13 @@ export default {
             this.calendarData = newCalendar;
             this.authUser.setCalendarData(newCalendar);
             await this.authUser.saveUserData();
-        }
+        },
+        addNewTodo(){
+            this.authUser.selectedDay = this.active;
+            this.authUser.calendarData = this.calendarData;
+            this.authUser.selectedTodo = {};
+            this.$router.push('todo_update');
+        },
     },
     computed:{
         email(){
@@ -129,12 +137,20 @@ export default {
         this.userAuthorized();
         await this.authUser.fetchCalendar();
         await this.createCalendar();
+        if(this.authUser.selectedDay){
+            this.activeDay(this.authUser.selectedDay)
+        }
     },
 }
 </script>
 <style lang="scss">
 .todo-page{
-    max-width: 100%;
+    width: 100%;
+    &__header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center ;
+    }
     &__title{
         font-size: 20px;
         font-weight: 700;

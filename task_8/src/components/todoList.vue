@@ -2,7 +2,7 @@
     <div class="todo-list">
         <div class="todo-list__title">{{ title}} Tasks today</div>
         <div class="todo-list__content">
-            <todoItem v-for="todo in todoData" :key="todo.description" :item="todo" @update="updateTodo"/>
+            <todoItem v-for="todo in todoData" :key="todo.description" :item="todo" @update="updateTodo" @edit="editTodo"/>
         </div>
     </div>
 </template>
@@ -35,7 +35,11 @@ export default {
                 }
             })
             this.$emit('update',newTodoList);
+        },
+        editTodo(todo){
+            this.$emit('edit',todo)
         }
+
     }
     ,
     computed:{

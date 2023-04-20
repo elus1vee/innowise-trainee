@@ -7,6 +7,8 @@ export const useAuthUser = defineStore("authUser", {
   state: () => ({
     email: "",
     calendarData: [],
+    selectedDay: "",
+    selectedTodo: {},
   }),
 
   actions: {
@@ -50,6 +52,46 @@ export const useAuthUser = defineStore("authUser", {
         .ref(`/users/${uid}/todo`)
         .set(this.calendarData);
       this.clearState();
+    },
+    async addNewTodo(newTodo) {
+      const newCalendarData = this.calendarData.map((el) => {
+        if (el.fullDate === this.selectedDay) {
+          if (el.todolist !== undefined) {
+            el.todolist.push(newTodo);
+          } else {
+            el.todolist = [{ 1: "1" }];
+            el.todolist[0] = newTodo;
+          }
+        }
+        return el;
+      });
+      this.calendarData = newCalendarData;
+      const uid = this.getUserId();
+      await firebase
+        .database()
+        .ref(`/users/${uid}/todo`)
+        .set(this.calendarData);
+    },
+    async editTodo(editedTodo) {
+      const newCalendarData = this.calendarData.map((el) => {
+        if (el.fullDate === this.selectedDay) {
+          el.todolist = el.todolist.map((todo) => {
+            if (todo === this.selectedTodo) {
+              console.log("AFAFAAPAPFP");
+              return editedTodo;
+            } else {
+              return todo;
+            }
+          });
+        }
+        return el;
+      });
+      this.calendarData = newCalendarData;
+      const uid = this.getUserId();
+      await firebase
+        .database()
+        .ref(`/users/${uid}/todo`)
+        .set(this.calendarData);
     },
   },
 });
