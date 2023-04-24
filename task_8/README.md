@@ -20,7 +20,7 @@
 </p>
 <hr/>
 <h2>Database snapshot</h2>
-<img src="https://prnt.sc/zBA0VvzcLu91">
+<img src="./src/assets/img/Screenshot_1.png">
 <hr/>
 <h2>Application stack</h2>
 <p>
