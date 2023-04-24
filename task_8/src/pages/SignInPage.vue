@@ -38,7 +38,6 @@ export default {
         async signIn(){
             await firebase.auth().signInWithEmailAndPassword(this.email,this.password).then(()=>{
                 this.authUser.$state.email = this.email;
-                console.log(`money: ${this.authUser.$state.email}`);
                 toast.success("Success!");
                 this.$router.push("todo")
             }).catch((er)=>{

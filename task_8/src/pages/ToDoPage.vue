@@ -104,7 +104,6 @@ export default {
                 }
                 return el;
             });
-            console.log("aga");
             newCalendar.forEach((el)=>{
                 if(el.todolist !== undefined){
                     if(el.todolist.some(val=>val.completed===true)){
@@ -114,7 +113,6 @@ export default {
                     }
                 }
             })
-            console.log(newCalendar);
 
 
             this.calendarData = newCalendar;

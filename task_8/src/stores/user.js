@@ -15,7 +15,6 @@ export const useAuthUser = defineStore("authUser", {
     fetchEmail() {
       firebase.auth().onAuthStateChanged((user) => {
         this.email = user.email;
-        console.log(this.getUserId());
       });
     },
     getUserId() {
