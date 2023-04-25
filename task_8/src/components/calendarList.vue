@@ -72,6 +72,7 @@ export default {
             return width;
         },
         leftWidth(){
+            if(this.fullCalendarWidth - this.contentWidth - this.currentIndex < 0) return 0
             return this.fullCalendarWidth - this.contentWidth - this.currentIndex;
         },
         scrollLength(){
@@ -81,9 +82,6 @@ export default {
             }
             return scrollLength;
         },
-        startLeftWidth(){
-            return  75* this.calendarData.length - this.contentWidth;
-        }
     },
 
 }
