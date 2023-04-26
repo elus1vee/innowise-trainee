@@ -21,7 +21,7 @@
 <hr/>
 <h2>Database snapshot</h2>
 <p>This is an example of how the database looks like for one calendar day, with tasks in it.</p>
-<img src="./src/assets/img/Screenshot_1.png">
+<img src="./src/assets/img/Screenshot_1.png" width="300">
 <hr/>
 <h2>Application stack</h2>
 <p>
