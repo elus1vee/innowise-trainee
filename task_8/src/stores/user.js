@@ -50,9 +50,11 @@ export const useAuthUser = defineStore("authUser", {
         .database()
         .ref(`/users/${uid}/todo`)
         .set(this.calendarData);
-      this.clearState();
     },
     async addNewTodo(newTodo) {
+      console.log("Tyt");
+      console.log(this.calendarData);
+
       const newCalendarData = this.calendarData.map((el) => {
         if (el.fullDate === this.selectedDay) {
           if (el.todolist !== undefined) {

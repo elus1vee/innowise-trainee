@@ -5,18 +5,16 @@
 </template>
 <script>
 export default {
-  data(){
-    return{
-    }
+  data() {
+    return {};
   },
-}
+};
 </script>
 <style>
-  .content{
-    display: flex;
-    justify-content: center;
-    height: 80vh;
-    margin: 30px 20px;
-     
-  }
+.content {
+  display: flex;
+  justify-content: center;
+  height: 80vh;
+  margin: 30px 20px;
+}
 </style>

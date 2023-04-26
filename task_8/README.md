@@ -3,12 +3,12 @@
 <a href="https://drive.google.com/file/d/18I1PxOxZn2lwm__YeOtMNoWeiXygKwwN/view">Description of the task.</a></p>
 <hr/>
 <h2>How to run the app</h2>
-<p>First of all you need to clone the project. Copy the Clone Url of the repository, go to the terminal and type "git clone *url*". After that, enter "npm i" into the terminal - to install all dependencies and plugins. Now everything is ready to launch the application! Just type "npm run build" into the terminal and after "npm run serve" you will see the application page open in your browser.</p>
+<p>First of all you need to clone the project. Copy the Clone Url of the repository, go to the terminal and type "git clone *url*". After that, enter "npm i" into the terminal - to install all dependencies and plugins. Now everything is ready to launch the application! Just type "npm run serve" you will see the application page open in your browser.</p>
 <hr/>
 <h2>Project structure</h2>
 <p>
-    ├──./public/<br/>│   ├──index.html<br/>│   ├──index.html<br/>
-    ├──./src/<br/>│   ├──/assets/<br/>│   │   ├──/css/<br/>│   │   ├──/img/<br/>
+    ├──./public/<br/>│   ├──index.html<br/>
+    ├──./src/   <br/>│   ├──/assets/<br/>│   │   ├──/css/<br/>│   │   ├──/img/<br/>
                   │   ├──/components/<br/>
                   │   ├──/pages/<br/>
                   │   ├──/router/<br/>
@@ -20,9 +20,10 @@
 </p>
 <hr/>
 <h2>Database snapshot</h2>
+<p>This is an example of how the database looks like for one calendar day, with tasks in it.</p>
 <img src="./src/assets/img/Screenshot_1.png">
 <hr/>
 <h2>Application stack</h2>
 <p>
-    •Vue<hr/>•Pinia<hr/>•Toastify<hr/>•Firebase<hr/>•ESLint<hr/>•Router<hr/>SCSS<hr/>
+    •Vue<br/>•Pinia<br/>•Toastify<br/>•Firebase<br/>•ESLint<br/>•Router<br/>•SCSS<br/>
 </p>
