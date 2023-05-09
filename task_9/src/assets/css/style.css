@@ -1,0 +1,17 @@
+@import url("./reset-style.css");
+#app {
+  height: 100%;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  overflow-x: hidden;
+  background: rgb(28, 0, 104);
+  background: linear-gradient(
+    331deg,
+    rgba(28, 0, 104, 1) 0%,
+    rgba(121, 9, 87, 1) 100%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
