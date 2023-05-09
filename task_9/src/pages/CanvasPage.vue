@@ -182,7 +182,6 @@ export default defineComponent({
     async loadImg(name: string) {
       const url = await this.imageStore.getImgByName(name);
       const img = new Image();
-      img.crossOrigin = "anonymous";
       img.addEventListener(
         "load",
         () => {
