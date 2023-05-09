@@ -46,7 +46,8 @@
         @mousemove="drawIfPressed"
         height="500"
         width="500"
-      ></canvas>
+      >
+      </canvas>
     </div>
 
     <div class="canvas-page__footer">
@@ -82,18 +83,11 @@ export default defineComponent({
       context: 0 as any,
       sizeSwitcher: false,
       widthSize: 1,
+      editMode: false,
+      id: "",
     };
   },
   methods: {
-    userAuthorized() {
-      this.authUser.authStateChanged((user) => {
-        if (user) {
-          this.authUser.setEmail(user.email);
-        } else {
-          this.$router.push("signin");
-        }
-      });
-    },
     startDrawing(event: MouseEvent) {
       this.prevX = event.offsetX;
       this.prevY = event.offsetY;
@@ -175,9 +169,35 @@ export default defineComponent({
       }
     },
     async saveImg() {
+      // this.canvas.toBlob((blob: Blob) => {
+      //   console.log(blob);
+      // }, "image/png");
+      console.log(this.canvas);
+
       await this.canvas.toBlob(async (blob: Blob) => {
         await this.imageStore.saveImg(blob, this.authUser.email);
       }, "image/png");
+      this.$router.push("/");
+    },
+    async loadImg(name: string) {
+      const url = await this.imageStore.getImgByName(name);
+      const img = new Image();
+      img.crossOrigin = "anonymous";
+      img.addEventListener(
+        "load",
+        () => {
+          this.context.drawImage(img, 0, 0);
+        },
+        false
+      );
+      img.src = url;
+      // img.crossOrigin = "anonymous";
+    },
+    checkParams() {
+      const id = this.$route.params.id;
+      if (typeof id === "string") {
+        this.loadImg(id);
+      }
     },
   },
   watch: {
@@ -189,12 +209,12 @@ export default defineComponent({
     },
   },
   mounted() {
-    this.userAuthorized();
     this.canvas = this.$refs.canvas as HTMLCanvasElement;
     this.context = this.canvas.getContext("2d") as CanvasRenderingContext2D;
     this.context.lineCap = "round";
     this.context.lineWidth = 1;
     this.context.strokeStyle = "black";
+    this.checkParams();
   },
 });
 </script>
@@ -229,6 +249,7 @@ export default defineComponent({
   }
   &__canvas {
     border: 3px solid rgb(16, 9, 159);
+    background-color: white;
   }
   &__pencil {
     -webkit-mask-image: url("@/assets/img/pencil.svg");

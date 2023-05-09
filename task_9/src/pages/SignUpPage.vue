@@ -84,16 +84,6 @@ export default defineComponent({
         this.confirmPassword = "";
       }
     },
-    checkUserStatus() {
-      this.authUser.authStateChanged((user) => {
-        if (user) {
-          this.$router.push("/");
-        }
-      });
-    },
-  },
-  mounted() {
-    this.checkUserStatus();
   },
 });
 </script>
@@ -104,14 +94,14 @@ export default defineComponent({
   justify-content: center;
 
   &__content {
-    border: 3px solid rgb(16, 9, 159);
+    border: 3px solid rgb(48, 217, 255);
     border-radius: 15px;
     padding: 20px;
     width: 80%;
     height: max-content;
   }
   &__title {
-    color: rgb(16, 9, 159);
+    color: rgb(48, 217, 255);
     font-size: 24px;
     font-weight: 800;
     line-height: 24px;

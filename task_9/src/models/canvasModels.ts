@@ -4,4 +4,5 @@ export type IImageItem = {
   path: string;
   url: string;
   author: string;
+  name: string;
 };

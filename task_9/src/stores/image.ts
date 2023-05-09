@@ -9,8 +9,6 @@ export const useImageStore = defineStore("imageStore", {
   actions: {
     getUserId() {
       const user = firebase.auth().currentUser;
-      console.log(user);
-
       if (user) return user.uid;
     },
     async saveImg(img: Blob, email: string) {
@@ -18,13 +16,14 @@ export const useImageStore = defineStore("imageStore", {
       await firebase
         .storage()
         .ref(`/images/${date}.png`)
-        .put(img, { customMetadata: { author: email } })
-        .then((data) => console.log(data));
+        .put(img, { customMetadata: { author: email } });
     },
     async loadImg() {
       const list = await firebase.storage().ref("/images/").list();
+
       const array = list.items.map((el) => {
-        return { path: el.fullPath };
+        const name = el.name.split(".")[0];
+        return { path: el.fullPath, name: name };
       });
 
       const object = await Promise.all(
@@ -33,7 +32,8 @@ export const useImageStore = defineStore("imageStore", {
           const url = await firebase.storage().ref(el.path).getDownloadURL();
           return {
             path: el.path,
-            author: metadata.customMetadata?.author,
+            name: el.name,
+            author: metadata.customMetadata?.author || "",
             url,
           };
         })
@@ -41,12 +41,12 @@ export const useImageStore = defineStore("imageStore", {
 
       return object;
     },
-    // async saveUserData() {
-    //   const uid = this.getUserId();
-    //   await firebase
-    //     .database()
-    //     .ref(`/users/${uid}/todo`)
-    //     .set(this.calendarData);
-    // },
+    async getImgByName(name: string) {
+      const url = await firebase
+        .storage()
+        .ref(`/images/${name}.png`)
+        .getDownloadURL();
+      return url;
+    },
   },
 });

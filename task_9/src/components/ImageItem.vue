@@ -1,5 +1,5 @@
 <template>
-  <div class="image-item">
+  <div class="image-item" @click="$router.push(`/canvas/${imgData.name}`)">
     <img :src="imgData.url" alt="" class="image-item__img" />
     <p class="image-item__author">{{ imgData.author }}</p>
   </div>
@@ -16,7 +16,7 @@ export default defineComponent({
       type: Object as PropType<IImageItem>,
       required: true,
       default() {
-        return { path: "", url: "", author: "" };
+        return { path: "", url: "", author: "", name: "" };
       },
     },
   },

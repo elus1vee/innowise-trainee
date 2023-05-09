@@ -11,8 +11,8 @@
     </div>
     <div class="main__body">
       <p>Search by user</p>
-      <PrimaryInput />
-      <ImageList :img-data="imageData" v-if="!loading" />
+      <PrimaryInput v-model="searchQuery" />
+      <ImageList :img-data="sortedImageData" v-if="!loading" />
       <ContentLoader v-else class="main__loader" />
     </div>
     <div class="main__footer"></div>
@@ -28,7 +28,8 @@ import ContentLoader from "@/components/baseComponents/ContentLoader.vue";
 
 import { useAuthUser } from "@/stores/auth";
 import { useImageStore } from "@/stores/image";
-import { authService } from "@/services/auth.service";
+
+import { IImageItem } from "@/models/canvasModels";
 
 export default defineComponent({
   components: {
@@ -37,37 +38,41 @@ export default defineComponent({
     ImageList,
     ContentLoader,
   },
-  data() {
+  data: () => {
     return {
       authUser: useAuthUser(),
       imageStore: useImageStore(),
-      imageData: [] as any,
+      imageData: [
+        { author: "", url: "", path: "", name: "" },
+      ] as Array<IImageItem>,
       loading: true,
+      searchQuery: "",
     };
   },
   methods: {
-    userAuthorized() {
-      this.authUser.authStateChanged((user) => {
-        if (user) {
-          this.authUser.setEmail(user.email);
-        } else {
-          this.$router.push("signin");
-        }
-      });
-    },
     createNewImg() {
       this.$router.push("canvas");
     },
     async fetchImgData() {
-      const imgData = await this.imageStore.loadImg();
-      this.imageData = imgData;
-      this.loading = false;
+      setTimeout(async () => {
+        const imgData = await this.imageStore.loadImg();
+        this.imageData = imgData;
+        this.loading = false;
+      }, 500);
+    },
+  },
+  computed: {
+    sortedImageData() {
+      return this.imageData.filter((image) =>
+        image.author.includes(this.searchQuery)
+      );
     },
   },
   mounted() {
+    console.log(process.env);
+
     this.fetchImgData();
-    this.userAuthorized();
-    console.log(authService.isLoggedIn());
+    // this.userAuthorized();
   },
 });
 </script>

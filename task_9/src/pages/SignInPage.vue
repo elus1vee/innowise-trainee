@@ -59,16 +59,6 @@ export default defineComponent({
           toast.info(er.toString());
         });
     },
-    checkUserStatus() {
-      this.authUser.authStateChanged((user) => {
-        if (user) {
-          this.$router.push("/");
-        }
-      });
-    },
-  },
-  async mounted() {
-    this.checkUserStatus();
   },
 });
 </script>

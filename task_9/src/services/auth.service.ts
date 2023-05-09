@@ -25,10 +25,6 @@ class AuthService {
   public authStateChanged = (callback: (user: any) => void) => {
     firebase.auth().onAuthStateChanged(callback);
   };
-
-  public isLoggedIn = () => {
-    // firebase.auth().onAuthStateChanged()
-  };
 }
 
 export const authService = new AuthService();
