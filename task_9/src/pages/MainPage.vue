@@ -12,8 +12,17 @@
     <div class="main__body">
       <p>Search by user</p>
       <PrimaryInput v-model="searchQuery" />
-      <ImageList :img-data="sortedImageData" v-if="!loading" />
-      <ContentLoader v-else class="main__loader" />
+      <ImageList
+        :img-data="reversedItems"
+        v-if="!loading && reversedItems.length > 0"
+      />
+      <ContentLoader v-else-if="loading" class="main__loader" />
+      <div
+        v-else-if="!loading && reversedItems.length === 0"
+        class="main__error"
+      >
+        No images yet
+      </div>
     </div>
     <div class="main__footer"></div>
   </div>
@@ -67,6 +76,9 @@ export default defineComponent({
         image.author.includes(this.searchQuery)
       );
     },
+    reversedItems() {
+      return [...this.sortedImageData].reverse();
+    },
   },
   mounted() {
     console.log(process.env);
@@ -85,6 +97,13 @@ export default defineComponent({
     padding-bottom: 15px;
     border-bottom: 2px solid rgb(48, 217, 255);
     margin-bottom: 15px;
+  }
+  &__error {
+    text-align: center;
+    margin-top: 30px;
+    font-weight: 800;
+    font-size: 25px;
+    color: rgb(48, 217, 255);
   }
   &__user {
     display: flex;

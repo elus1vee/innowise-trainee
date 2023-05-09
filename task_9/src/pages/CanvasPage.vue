@@ -1,6 +1,6 @@
 <template>
   <div class="canvas-page">
-    {{ authUser.email }}
+    <PrimaryButton @click="$router.push('/')">Back</PrimaryButton>
     <div class="canvas-page__content">
       <input
         type="range"
@@ -190,7 +190,6 @@ export default defineComponent({
         false
       );
       img.src = url;
-      // img.crossOrigin = "anonymous";
     },
     checkParams() {
       const id = this.$route.params.id;
@@ -223,6 +222,11 @@ export default defineComponent({
     display: flex;
     height: 80%;
     position: relative;
+    margin-top: 20px;
+    border: 3px solid rgb(48, 217, 255);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    // overflow: hidden;
   }
   &__footer {
     margin-top: 15px;
@@ -234,9 +238,10 @@ export default defineComponent({
     flex-direction: column;
     gap: 15px;
     height: 100%;
-    background: rgb(16, 9, 159);
-    padding: 3px 10px;
-    border: 3px solid rgb(16, 9, 159);
+    background: rgb(136, 130, 236);
+    padding: 10px 20px;
+    border-top-left-radius: 17px;
+    border-bottom-left-radius: 17px;
   }
   &__widthSwitcher {
     appearance: slider-vertical;
@@ -244,66 +249,66 @@ export default defineComponent({
     width: 3px;
     height: 100px;
     position: absolute;
-    left: -50px;
+    left: -30px;
   }
   &__canvas {
-    border: 3px solid rgb(16, 9, 159);
     background-color: white;
   }
   &__pencil {
     -webkit-mask-image: url("@/assets/img/pencil.svg");
     mask-image: url("@/assets/img/pencil.svg");
     mask-size: contain;
-    background-color: black;
-    width: 32px;
-    height: 32px;
+    background-color: rgb(48, 217, 255);
+    width: 40px;
+    height: 40px;
     cursor: pointer;
   }
   &__color {
-    width: 32px;
+    width: 40px;
     cursor: pointer;
+    border: 3px solid rgb(48, 217, 255);
   }
   &__size {
     -webkit-mask-image: url("@/assets/img/width.svg");
     mask-image: url("@/assets/img/width.svg");
     mask-size: contain;
-    background-color: black;
-    width: 32px;
-    height: 32px;
+    background-color: rgb(48, 217, 255);
+    width: 40px;
+    height: 40px;
     cursor: pointer;
   }
   &__line {
     -webkit-mask-image: url("@/assets/img/line.svg");
     mask-image: url("@/assets/img/line.svg");
     mask-size: contain;
-    background-color: black;
-    width: 32px;
-    height: 32px;
+    background-color: rgb(48, 217, 255);
+    width: 40px;
+    height: 40px;
     cursor: pointer;
   }
   &__rectangle {
     -webkit-mask-image: url("@/assets/img/rect.svg");
     mask-image: url("@/assets/img/rect.svg");
     mask-size: contain;
-    background-color: black;
-    background-size: 32px;
-    width: 32px;
-    height: 32px;
+    background-color: rgb(48, 217, 255);
+    background-size: 40px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
   }
   &__circle {
     -webkit-mask-image: url("@/assets/img/circle.svg");
     mask-image: url("@/assets/img/circle.svg");
-    background-color: black;
+    background-color: rgb(48, 217, 255);
     mask-size: contain;
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
   }
 }
 
 .active-tab {
   position: relative;
-  background-color: rgb(170, 218, 255);
+  background-color: rgb(1, 49, 242);
 }
 </style>
