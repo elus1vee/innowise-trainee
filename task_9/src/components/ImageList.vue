@@ -38,6 +38,5 @@ export default defineComponent({
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  //   gap: 15px;
 }
 </style>

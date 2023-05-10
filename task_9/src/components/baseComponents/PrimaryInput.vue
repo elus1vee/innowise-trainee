@@ -38,6 +38,5 @@ export default defineComponent({
 }
 .input:focus {
   background-color: rgb(207, 245, 255);
-  /* outline: 1px solid rgb(198, 198, 198); */
 }
 </style>

@@ -67,7 +67,7 @@ export default defineComponent({
         const imgData = await this.imageStore.loadImg();
         this.imageData = imgData;
         this.loading = false;
-      }, 500);
+      }, 800);
     },
   },
   computed: {
