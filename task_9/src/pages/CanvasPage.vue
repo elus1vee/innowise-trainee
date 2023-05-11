@@ -59,15 +59,11 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
+
 import { useImageStore } from "@/stores/image";
 import { useAuthUser } from "@/stores/auth";
 
-import PrimaryButton from "@/components/baseComponents/PrimaryButton.vue";
-
 export default defineComponent({
-  components: {
-    PrimaryButton,
-  },
   data() {
     return {
       imageStore: useImageStore(),

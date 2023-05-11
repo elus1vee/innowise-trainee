@@ -42,16 +42,9 @@ import { defineComponent } from "vue";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 
-import PrimaryButton from "@/components/baseComponents/PrimaryButton.vue";
-import PrimaryInput from "@/components/baseComponents/PrimaryInput.vue";
-
 import { useAuthUser } from "@/stores/auth";
 
 export default defineComponent({
-  components: {
-    PrimaryInput,
-    PrimaryButton,
-  },
   data() {
     return {
       email: "",

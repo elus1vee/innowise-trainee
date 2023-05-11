@@ -11,7 +11,9 @@
   </div>
 </template>
 <script lang="ts">
-export default {};
+export default {
+  name: "ContentLoader",
+};
 </script>
 <style lang="scss">
 .lds-roller {

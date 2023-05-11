@@ -30,10 +30,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-import PrimaryButton from "@/components/baseComponents/PrimaryButton.vue";
-import PrimaryInput from "@/components/baseComponents/PrimaryInput.vue";
 import ImageList from "@/components/ImageList.vue";
-import ContentLoader from "@/components/baseComponents/ContentLoader.vue";
 
 import { useAuthUser } from "@/stores/auth";
 import { useImageStore } from "@/stores/image";
@@ -42,10 +39,7 @@ import { IImageItem } from "@/models/canvasModels";
 
 export default defineComponent({
   components: {
-    PrimaryButton,
-    PrimaryInput,
     ImageList,
-    ContentLoader,
   },
   data: () => {
     return {
@@ -80,15 +74,7 @@ export default defineComponent({
       return [...this.sortedImageData].reverse();
     },
   },
-  // mounted() {
-  //   console.log(process.env);
-
-  //   this.fetchImgData();
-  //   // this.userAuthorized();
-  // },
-  mounted() {
-    console.log(process.env);
-
+  created() {
     this.fetchImgData();
   },
 });

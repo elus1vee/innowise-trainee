@@ -4,7 +4,9 @@
   </button>
 </template>
 <script lang="ts">
-export default {};
+export default {
+  name: "PrimaryButton",
+};
 </script>
 <style scoped>
 .button {
