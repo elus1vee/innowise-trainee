@@ -51,8 +51,9 @@
     </div>
 
     <div class="canvas-page__footer">
-      <PrimaryButton>Delete</PrimaryButton>
-      <PrimaryButton @click="saveImg">Save</PrimaryButton>
+      <PrimaryButton @click="saveImg" class="canvas-page__save"
+        >Save</PrimaryButton
+      >
     </div>
   </div>
 </template>
@@ -304,6 +305,9 @@ export default defineComponent({
     width: 40px;
     height: 40px;
     cursor: pointer;
+  }
+  &__save {
+    width: 100%;
   }
 }
 
