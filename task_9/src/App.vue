@@ -4,11 +4,27 @@
   </div>
 </template>
 <script lang="ts">
-export default {
+import { defineComponent } from "vue";
+import { useAuthUser } from "./stores/auth";
+import { authService } from "./services/auth.service";
+
+export default defineComponent({
   data() {
-    return {};
+    return {
+      authUser: useAuthUser(),
+    };
   },
-};
+  async mounted() {
+    authService.authStateChanged((user) => {
+      if (user) {
+        useAuthUser().setEmail(user.email);
+      } else {
+        this.$router.push("/signin");
+      }
+    });
+    if (!this.authUser.isLoggedIn) this.$router.push("/signin");
+  },
+});
 </script>
 <style lang="scss">
 .content {

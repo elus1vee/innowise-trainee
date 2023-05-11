@@ -80,8 +80,6 @@ export default defineComponent({
       context: 0 as any,
       sizeSwitcher: false,
       widthSize: 1,
-      editMode: false,
-      id: "",
     };
   },
   methods: {

@@ -51,6 +51,7 @@ export default defineComponent({
         .signIn(this.email, this.password)
         .then(() => {
           toast.success("Success!");
+          this.authUser.isLoggedIn = true;
           this.$router.push("/");
         })
         .catch((er) => {
