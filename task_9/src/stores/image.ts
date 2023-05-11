@@ -2,24 +2,23 @@ import { defineStore } from "pinia";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
+import { storageService } from "@/services/storage.service";
+import { authService } from "@/services/auth.service";
 
 export const useImageStore = defineStore("imageStore", {
   state: () => ({}),
 
   actions: {
     getUserId() {
-      const user = firebase.auth().currentUser;
-      if (user) return user.uid;
+      const uid = authService.getUserUid();
+      if (uid) return uid;
     },
     async saveImg(img: Blob, email: string) {
       const date = Date.now();
-      await firebase
-        .storage()
-        .ref(`/images/${date}.png`)
-        .put(img, { customMetadata: { author: email } });
+      await storageService.saveImg(img, email, date);
     },
     async loadImg() {
-      const list = await firebase.storage().ref("/images/").list();
+      const list = await storageService.getImgList();
 
       const array = list.items.map((el) => {
         const name = el.name.split(".")[0];
@@ -28,8 +27,8 @@ export const useImageStore = defineStore("imageStore", {
 
       const object = await Promise.all(
         array.map(async (el) => {
-          const metadata = await firebase.storage().ref(el.path).getMetadata();
-          const url = await firebase.storage().ref(el.path).getDownloadURL();
+          const metadata = await storageService.getImgMetaData(el.path);
+          const url = await storageService.getImgUrl(el.path);
           return {
             path: el.path,
             name: el.name,
@@ -42,11 +41,8 @@ export const useImageStore = defineStore("imageStore", {
       return object;
     },
     async getImgByName(name: string) {
-      const url = await firebase
-        .storage()
-        .ref(`/images/${name}.png`)
-        .getDownloadURL();
-      return url;
+      const path = `/images/${name}.png`;
+      return await storageService.getImgUrl(path);
     },
   },
 });
