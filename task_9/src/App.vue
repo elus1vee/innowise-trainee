@@ -15,6 +15,8 @@ export default defineComponent({
     };
   },
   async mounted() {
+    console.log(process.env);
+
     authService.authStateChanged((user) => {
       if (user) {
         useAuthUser().setEmail(user.email);

@@ -37,6 +37,7 @@
           :class="activeTab === 'circle' ? 'active-tab' : ''"
         ></div>
         <input type="color" class="canvas-page__color" v-model="color" />
+        <div class="canvas-page__trash" @click="clearCanvas"></div>
       </div>
       <canvas
         class="canvas-page__canvas"
@@ -192,6 +193,9 @@ export default defineComponent({
         this.loadImg(id);
       }
     },
+    clearCanvas() {
+      this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    },
   },
   watch: {
     color() {
@@ -296,6 +300,17 @@ export default defineComponent({
     mask-image: url("@/assets/img/circle.svg");
     background-color: rgb(48, 217, 255);
     mask-size: contain;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+  }
+  &__trash {
+    -webkit-mask-image: url("@/assets/img/trash.svg");
+    mask-image: url("@/assets/img/trash.svg");
+    background-color: rgb(48, 217, 255);
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
     width: 40px;
     height: 40px;
     cursor: pointer;
