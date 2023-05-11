@@ -80,11 +80,16 @@ export default defineComponent({
       return [...this.sortedImageData].reverse();
     },
   },
+  // mounted() {
+  //   console.log(process.env);
+
+  //   this.fetchImgData();
+  //   // this.userAuthorized();
+  // },
   mounted() {
     console.log(process.env);
 
     this.fetchImgData();
-    // this.userAuthorized();
   },
 });
 </script>
