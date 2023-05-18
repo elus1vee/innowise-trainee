@@ -28,9 +28,6 @@ export const useAuthUser = defineStore("authUser", {
       console.log(this.email);
     },
     async checkIsLoggedIn() {
-      // this.authStateChanged((user) => {
-      //   if (user) this.isLoggedIn = true;
-      // });
       await new Promise((resolve, reject) => {
         this.authStateChanged((user) => {
           resolve(user);

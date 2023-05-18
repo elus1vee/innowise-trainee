@@ -170,24 +170,6 @@ export default defineComponent({
       }, "image/png");
       this.$router.push("/");
     },
-    async loadImg(name: string) {
-      const url = await this.imageStore.getImgByName(name);
-      const img = new Image();
-      img.addEventListener(
-        "load",
-        () => {
-          this.context.drawImage(img, 0, 0);
-        },
-        false
-      );
-      img.src = url;
-    },
-    checkParams() {
-      const id = this.$route.params.id;
-      if (typeof id === "string") {
-        this.loadImg(id);
-      }
-    },
     clearCanvas() {
       this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     },
@@ -206,7 +188,6 @@ export default defineComponent({
     this.context.lineCap = "round";
     this.context.lineWidth = 1;
     this.context.strokeStyle = "black";
-    this.checkParams();
   },
 });
 </script>
@@ -220,7 +201,6 @@ export default defineComponent({
     border: 3px solid rgb(48, 217, 255);
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
-    // overflow: hidden;
   }
   &__footer {
     margin-top: 15px;
