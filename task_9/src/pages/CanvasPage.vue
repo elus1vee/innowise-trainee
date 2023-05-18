@@ -165,11 +165,6 @@ export default defineComponent({
       }
     },
     async saveImg() {
-      // this.canvas.toBlob((blob: Blob) => {
-      //   console.log(blob);
-      // }, "image/png");
-      console.log(this.canvas);
-
       await this.canvas.toBlob(async (blob: Blob) => {
         await this.imageStore.saveImg(blob, this.authUser.email);
       }, "image/png");

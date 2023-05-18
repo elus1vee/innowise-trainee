@@ -29,7 +29,6 @@
       <div class="signup__signin">
         <p>Already have an account?</p>
         <RouterLink to="/signin">
-          <!-- <PrimaryButton class="signin__signup-btn">Register</PrimaryButton> -->
           <p class="signin__signup-btn">Sign in</p>
         </RouterLink>
       </div>
@@ -74,8 +73,16 @@ export default defineComponent({
             toast.error("Error!");
             toast.info(er.message.toString());
           });
+      } else if (this.password.length <= 6) {
+        toast.warning(`Password must be at least 7 characters!`, {
+          autoClose: 3000,
+        });
+
+        this.email = "";
+        this.password = "";
+        this.confirmPassword = "";
       } else {
-        toast.warning(`Invalid email or password!`, {
+        toast.warning(`Invalid password or email!`, {
           autoClose: 3000,
         });
 
