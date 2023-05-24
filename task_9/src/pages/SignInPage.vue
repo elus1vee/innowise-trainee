@@ -16,13 +16,12 @@
         placeholder="Enter password"
         class="signin__input"
       />
-      <PrimaryButton @click="signIn()" class="signin__signin-btn"
+      <PrimaryButton @click="signIn" class="signin__signin-btn"
         >Sign In</PrimaryButton
       >
       <div class="signin__register">
         <p>Still not registered?</p>
         <RouterLink to="/signup">
-          <!-- <PrimaryButton class="signin__signup-btn">Register</PrimaryButton> -->
           <p class="signin__signup-btn">Register</p>
         </RouterLink>
       </div>
@@ -35,7 +34,7 @@ import { defineComponent } from "vue";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 
-import { useAuthUser } from "@/stores/auth";
+import { useAuthUser } from "@/store/auth";
 
 export default defineComponent({
   data() {

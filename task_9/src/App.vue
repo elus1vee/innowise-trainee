@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import { useAuthUser } from "./stores/auth";
+import { useAuthUser } from "./store/auth";
 import { authService } from "./services/auth.service";
 
 export default defineComponent({

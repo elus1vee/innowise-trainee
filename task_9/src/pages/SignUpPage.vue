@@ -23,7 +23,7 @@
         placeholder="Confirm password "
         class="signup__input"
       />
-      <PrimaryButton @click="signUp()" class="signup__signup-btn"
+      <PrimaryButton @click="signUp" class="signup__signup-btn"
         >Register</PrimaryButton
       >
       <div class="signup__signin">
@@ -41,7 +41,7 @@ import { defineComponent } from "vue";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 
-import { useAuthUser } from "@/stores/auth";
+import { useAuthUser } from "@/store/auth";
 
 export default defineComponent({
   data() {
@@ -138,7 +138,7 @@ export default defineComponent({
   &__signup-btn {
     width: 100%;
   }
-  &__signin -btn {
+  &__signin-btn {
     color: rgb(48, 217, 255);
     text-decoration: underline;
   }

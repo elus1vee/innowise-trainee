@@ -5,7 +5,7 @@ import SignInPage from "@/pages/SignInPage.vue";
 import CanvasPage from "@/pages/CanvasPage.vue";
 import MainPage from "@/pages/MainPage.vue";
 
-import { useAuthUser } from "@/stores/auth";
+import { useAuthUser } from "@/store/auth";
 
 const routes = [
   {

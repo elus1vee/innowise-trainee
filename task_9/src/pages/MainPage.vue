@@ -17,12 +17,7 @@
         v-if="!loading && reversedItems.length > 0"
       />
       <ContentLoader v-else-if="loading" class="main__loader" />
-      <div
-        v-else-if="!loading && reversedItems.length === 0"
-        class="main__error"
-      >
-        No images yet
-      </div>
+      <div v-else class="main__error">No images yet</div>
     </div>
     <div class="main__footer"></div>
   </div>
@@ -32,8 +27,8 @@ import { defineComponent } from "vue";
 
 import ImageList from "@/components/ImageList.vue";
 
-import { useAuthUser } from "@/stores/auth";
-import { useImageStore } from "@/stores/image";
+import { useAuthUser } from "@/store/auth";
+import { useImageStore } from "@/store/userImages";
 
 import { IImageItem } from "@/models/canvasModels";
 
@@ -52,17 +47,8 @@ export default defineComponent({
       searchQuery: "",
     };
   },
-  methods: {
-    createNewImg() {
-      this.$router.push("canvas");
-    },
-    async fetchImgData() {
-      setTimeout(async () => {
-        const imgData = await this.imageStore.loadImg();
-        this.imageData = imgData;
-        this.loading = false;
-      }, 800);
-    },
+  created() {
+    this.fetchImgData();
   },
   computed: {
     sortedImageData() {
@@ -74,8 +60,17 @@ export default defineComponent({
       return [...this.sortedImageData].reverse();
     },
   },
-  created() {
-    this.fetchImgData();
+  methods: {
+    createNewImg() {
+      this.$router.push("canvas");
+    },
+    async fetchImgData() {
+      setTimeout(async () => {
+        const imgData = await this.imageStore.loadImg();
+        this.imageData = imgData;
+        this.loading = false;
+      }, 800);
+    },
   },
 });
 </script>

@@ -1,7 +1,6 @@
 <template>
   <div class="image-list">
     <ImageItem
-      class="image-list__item"
       v-for="item in imgData"
       :key="item.path"
       :img-data="item"
@@ -27,7 +26,6 @@ export default defineComponent({
       },
     },
   },
-  methods: {},
   mounted() {
     console.log(this.imgData);
   },

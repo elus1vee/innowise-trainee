@@ -61,8 +61,8 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-import { useImageStore } from "@/stores/image";
-import { useAuthUser } from "@/stores/auth";
+import { useImageStore } from "@/store/userImages";
+import { useAuthUser } from "@/store/auth";
 
 export default defineComponent({
   data() {
@@ -82,6 +82,21 @@ export default defineComponent({
       sizeSwitcher: false,
       widthSize: 1,
     };
+  },
+  mounted() {
+    this.canvas = this.$refs.canvas as HTMLCanvasElement;
+    this.context = this.canvas.getContext("2d") as CanvasRenderingContext2D;
+    this.context.lineCap = "round";
+    this.context.lineWidth = 1;
+    this.context.strokeStyle = "black";
+  },
+  watch: {
+    color() {
+      this.context.strokeStyle = this.color;
+    },
+    widthSize() {
+      this.context.lineWidth = this.widthSize;
+    },
   },
   methods: {
     startDrawing(event: MouseEvent) {
@@ -173,21 +188,6 @@ export default defineComponent({
     clearCanvas() {
       this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     },
-  },
-  watch: {
-    color() {
-      this.context.strokeStyle = this.color;
-    },
-    widthSize() {
-      this.context.lineWidth = this.widthSize;
-    },
-  },
-  mounted() {
-    this.canvas = this.$refs.canvas as HTMLCanvasElement;
-    this.context = this.canvas.getContext("2d") as CanvasRenderingContext2D;
-    this.context.lineCap = "round";
-    this.context.lineWidth = 1;
-    this.context.strokeStyle = "black";
   },
 });
 </script>
